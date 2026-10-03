@@ -21,8 +21,8 @@
     <string name="select_audio_track">Velg lydspor</string>
     <string name="settings">Innstillinger</string>
     <string name="size">Størrelse</string>
-    <string name="permission_info">Innvilg Next-avspillerprogrammet «%1$s»tilgang for å spille media.</string>
-    <string name="permission_settings">Innvilg Next-avspillerprogrammet «%1$s»tilgang (fra innstillingene siden dette ble nektet tidligere) for å spille media.</string>
+    <string name="permission_info">Innvilg Resonix «%1$s»tilgang for å spille media.</string>
+    <string name="permission_settings">Innvilg Resonix «%1$s»tilgang (fra innstillingene siden dette ble nektet tidligere) for å spille media.</string>
     <string name="player_controls_next">Neste</string>
     <string name="player_controls_play_pause">Spill av/pause</string>
     <string name="player_controls_previous">Forrige</string>

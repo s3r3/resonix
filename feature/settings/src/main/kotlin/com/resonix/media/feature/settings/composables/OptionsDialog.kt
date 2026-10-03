@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.resonix.media.core.ui.components.CancelButton
-import com.resonix.media.core.ui.components.NextDialog
+import com.resonix.media.core.ui.components.ResonixDialog
 import com.resonix.media.core.ui.components.tvListFocus
 
 @Composable
@@ -19,7 +19,7 @@ fun OptionsDialog(
     onDismissClick: () -> Unit,
     options: LazyListScope.() -> Unit,
 ) {
-    NextDialog(
+    ResonixDialog(
         onDismissRequest = onDismissClick,
         title = {
             Text(text = text)

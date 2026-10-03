@@ -52,8 +52,8 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.resonix.media.core.common.Utils
 import com.resonix.media.core.ui.R
-import com.resonix.media.core.ui.components.NextSegmentedListItem
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.components.ResonixSegmentedListItem
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 import com.resonix.media.feature.player.state.rememberPlaylistState
 import sh.calvin.reorderable.DragGestureDetector
 import sh.calvin.reorderable.ReorderableCollectionItemScope
@@ -139,7 +139,7 @@ private fun ReorderableCollectionItemScope.PlaylistItemView(
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     val hapticFeedback = LocalHapticFeedback.current
-    NextSegmentedListItem(
+    ResonixSegmentedListItem(
         modifier = Modifier
             .fillMaxWidth()
             .draggableHandle(
@@ -224,7 +224,7 @@ private fun ThumbnailView(
     ) {
         // Fallback icon
         Icon(
-            imageVector = NextIcons.Video,
+            imageVector = ResonixIcons.Video,
             contentDescription = null,
             tint = MaterialTheme.colorScheme.surfaceColorAtElevation(100.dp),
             modifier = Modifier
@@ -273,7 +273,7 @@ private fun EmptyPlaylistView() {
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         Icon(
-            imageVector = NextIcons.Video,
+            imageVector = ResonixIcons.Video,
             contentDescription = null,
             tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
             modifier = Modifier.fillMaxSize(0.3f),

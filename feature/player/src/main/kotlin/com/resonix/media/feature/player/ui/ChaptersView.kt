@@ -17,7 +17,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.media3.extractor.metadata.Chapter
 import com.resonix.media.core.ui.R
-import com.resonix.media.core.ui.components.NextSegmentedListItem
+import com.resonix.media.core.ui.components.ResonixSegmentedListItem
 import com.resonix.media.feature.player.extensions.formatted
 import kotlin.time.Duration.Companion.milliseconds
 
@@ -36,7 +36,7 @@ fun BoxScope.ChaptersView(
             contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
         ) {
             itemsIndexed(chapters, key = { _, chapter -> chapter.startTimeMs }) { index, chapter ->
-                NextSegmentedListItem(
+                ResonixSegmentedListItem(
                     selected = index == currentChapterIndex,
                     isFirstItem = index == 0,
                     isLastItem = index == chapters.lastIndex,

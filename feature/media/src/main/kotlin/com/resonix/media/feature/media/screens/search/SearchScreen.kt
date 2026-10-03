@@ -64,12 +64,12 @@ import com.resonix.media.core.model.MediaLayoutMode
 import com.resonix.media.core.model.Video
 import com.resonix.media.core.ui.R
 import com.resonix.media.core.ui.components.ListSectionTitle
-import com.resonix.media.core.ui.components.NextOutlinedTextField
-import com.resonix.media.core.ui.components.NextSegmentedListItem
-import com.resonix.media.core.ui.components.NextTopAppBar
+import com.resonix.media.core.ui.components.ResonixOutlinedTextField
+import com.resonix.media.core.ui.components.ResonixSegmentedListItem
+import com.resonix.media.core.ui.components.ResonixTopAppBar
 import com.resonix.media.core.ui.components.rememberRestorableFocusState
 import com.resonix.media.core.ui.components.tvFocusRing
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 import com.resonix.media.core.ui.extensions.copy
 import com.resonix.media.core.ui.extensions.plus
 import com.resonix.media.core.ui.theme.ResonixTheme
@@ -104,9 +104,9 @@ internal fun SearchScreenContent(
 
     Scaffold(
         topBar = {
-            NextTopAppBar(
+            ResonixTopAppBar(
                 title = {
-                    NextOutlinedTextField(
+                    ResonixOutlinedTextField(
                         value = state.query,
                         onValueChange = { onAction(SearchUiEvent.OnQueryChange(it)) },
                         modifier = Modifier
@@ -128,7 +128,7 @@ internal fun SearchScreenContent(
                             if (state.query.isNotEmpty()) {
                                 IconButton(onClick = { onAction(SearchUiEvent.OnQueryChange("")) }) {
                                     Icon(
-                                        imageVector = NextIcons.Close,
+                                        imageVector = ResonixIcons.Close,
                                         contentDescription = stringResource(R.string.clear_history),
                                     )
                                 }
@@ -159,7 +159,7 @@ internal fun SearchScreenContent(
                 navigationIcon = {
                     FilledTonalIconButton(onClick = { onAction(SearchUiEvent.NavigateUp) }) {
                         Icon(
-                            imageVector = NextIcons.ArrowBack,
+                            imageVector = ResonixIcons.ArrowBack,
                             contentDescription = stringResource(id = R.string.navigate_up),
                         )
                     }
@@ -295,7 +295,7 @@ private fun SuggestionsContent(
                         verticalArrangement = Arrangement.spacedBy(8.dp),
                     ) {
                         Icon(
-                            imageVector = NextIcons.Search,
+                            imageVector = ResonixIcons.Search,
                             contentDescription = null,
                             modifier = Modifier.size(48.dp),
                             tint = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -320,13 +320,13 @@ private fun SearchHistoryItem(
     onClick: () -> Unit,
     onRemove: () -> Unit,
 ) {
-    NextSegmentedListItem(
+    ResonixSegmentedListItem(
         modifier = Modifier.padding(horizontal = 8.dp),
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
         onClick = onClick,
         leadingContent = {
             Icon(
-                imageVector = NextIcons.History,
+                imageVector = ResonixIcons.History,
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.onSurfaceVariant,
             )
@@ -337,7 +337,7 @@ private fun SearchHistoryItem(
                 modifier = Modifier.size(24.dp),
             ) {
                 Icon(
-                    imageVector = NextIcons.Close,
+                    imageVector = ResonixIcons.Close,
                     contentDescription = stringResource(R.string.delete),
                     modifier = Modifier.size(18.dp),
                     tint = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -394,7 +394,7 @@ private fun SearchResultsContent(
                     verticalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     Icon(
-                        imageVector = NextIcons.Search,
+                        imageVector = ResonixIcons.Search,
                         contentDescription = null,
                         modifier = Modifier.size(48.dp),
                         tint = MaterialTheme.colorScheme.onSurfaceVariant,

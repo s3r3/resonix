@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.compose.LifecycleResumeEffect
 import com.resonix.media.core.ui.R
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 
 @Composable
 internal fun VaultBiometricButton(
@@ -50,7 +50,7 @@ internal fun VaultBiometricButton(
         modifier = modifier,
         onClick = { showPrompt = true },
     ) {
-        Icon(imageVector = NextIcons.Fingerprint, contentDescription = null)
+        Icon(imageVector = ResonixIcons.Fingerprint, contentDescription = null)
         Spacer(Modifier.size(8.dp))
         Text(text = stringResource(R.string.unlock_with_biometrics))
     }

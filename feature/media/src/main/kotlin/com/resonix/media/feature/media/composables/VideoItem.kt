@@ -47,8 +47,8 @@ import com.resonix.media.core.media.vault.VaultUri
 import com.resonix.media.core.model.ApplicationPreferences
 import com.resonix.media.core.model.MediaLayoutMode
 import com.resonix.media.core.model.Video
-import com.resonix.media.core.ui.components.NextSegmentedListItem
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.components.ResonixSegmentedListItem
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 import com.resonix.media.core.ui.theme.ResonixTheme
 
 @Composable
@@ -107,7 +107,7 @@ fun VideoListItem(
     val showSize = preferences.showSizeField && video.size > 0 && video.formattedFileSize.isNotBlank()
     val showResolution = preferences.showResolutionField && video.height > 0
 
-    NextSegmentedListItem(
+    ResonixSegmentedListItem(
         modifier = modifier,
         selected = selected,
         contentPadding = PaddingValues(8.dp),
@@ -193,7 +193,7 @@ fun VideoGridItem(
     onClick: () -> Unit = {},
     onLongClick: (() -> Unit)? = null,
 ) {
-    NextSegmentedListItem(
+    ResonixSegmentedListItem(
         modifier = modifier.width(IntrinsicSize.Min),
         selected = selected,
         contentPadding = PaddingValues(8.dp),
@@ -267,7 +267,7 @@ private fun ThumbnailView(
             .aspectRatio(16f / 10f),
     ) {
         Icon(
-            imageVector = NextIcons.Video,
+            imageVector = ResonixIcons.Video,
             contentDescription = null,
             tint = MaterialTheme.colorScheme.surfaceColorAtElevation(100.dp),
             modifier = Modifier

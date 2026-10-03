@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import com.resonix.media.core.ui.theme.ResonixTheme
-import com.resonix.media.feature.player.buttons.NextButton
+import com.resonix.media.feature.player.buttons.ResonixButton
 import com.resonix.media.feature.player.buttons.PlayPauseButton
 import com.resonix.media.feature.player.buttons.PreviousButton
 import com.resonix.media.feature.player.ui.preview.rememberPreviewPlayer
@@ -45,7 +45,7 @@ fun ControlsMiddleView(
             player = player,
             modifier = Modifier.focusRequester(playPauseFocusRequester),
         )
-        NextButton(player = player)
+        ResonixButton(player = player)
     }
 }
 

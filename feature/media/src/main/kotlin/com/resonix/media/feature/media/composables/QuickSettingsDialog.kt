@@ -43,8 +43,8 @@ import com.resonix.media.core.model.Sort
 import com.resonix.media.core.ui.R
 import com.resonix.media.core.ui.components.CancelButton
 import com.resonix.media.core.ui.components.DoneButton
-import com.resonix.media.core.ui.components.NextDialog
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.components.ResonixDialog
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 import com.resonix.media.feature.media.extensions.name
 
 @OptIn(ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
@@ -56,7 +56,7 @@ fun QuickSettingsDialog(
 ) {
     var preferences by remember { mutableStateOf(applicationPreferences) }
 
-    NextDialog(
+    ResonixDialog(
         onDismissRequest = onDismiss,
         title = {
             Text(text = stringResource(R.string.quick_settings))
@@ -123,7 +123,7 @@ fun QuickSettingsDialog(
                             ),
                             icon = {
                                 Icon(
-                                    imageVector = if (sortOrder == Sort.Order.ASCENDING) NextIcons.ArrowUpward else NextIcons.ArrowDownward,
+                                    imageVector = if (sortOrder == Sort.Order.ASCENDING) ResonixIcons.ArrowUpward else ResonixIcons.ArrowDownward,
                                     contentDescription = stringResource(R.string.ascending),
                                     modifier = Modifier.size(FilterChipDefaults.IconSize),
                                 )
@@ -204,8 +204,8 @@ fun FieldChip(
     selected: Boolean,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    selectedIcon: ImageVector = NextIcons.CheckBox,
-    unselectedIcon: ImageVector = NextIcons.CheckBoxOutline,
+    selectedIcon: ImageVector = ResonixIcons.CheckBox,
+    unselectedIcon: ImageVector = ResonixIcons.CheckBoxOutline,
 ) {
     FilterChip(
         selected = selected,
@@ -243,31 +243,31 @@ private fun SortOptions(
     ) {
         TextIconToggleButton(
             text = stringResource(id = R.string.title),
-            icon = NextIcons.Title,
+            icon = ResonixIcons.Title,
             isSelected = selectedSortBy == Sort.By.TITLE,
             onClick = { onOptionSelected(Sort.By.TITLE) },
         )
         TextIconToggleButton(
             text = stringResource(id = R.string.duration),
-            icon = NextIcons.Length,
+            icon = ResonixIcons.Length,
             isSelected = selectedSortBy == Sort.By.LENGTH,
             onClick = { onOptionSelected(Sort.By.LENGTH) },
         )
         TextIconToggleButton(
             text = stringResource(id = R.string.date),
-            icon = NextIcons.Calendar,
+            icon = ResonixIcons.Calendar,
             isSelected = selectedSortBy == Sort.By.DATE,
             onClick = { onOptionSelected(Sort.By.DATE) },
         )
         TextIconToggleButton(
             text = stringResource(id = R.string.size),
-            icon = NextIcons.Size,
+            icon = ResonixIcons.Size,
             isSelected = selectedSortBy == Sort.By.SIZE,
             onClick = { onOptionSelected(Sort.By.SIZE) },
         )
         TextIconToggleButton(
             text = stringResource(id = R.string.location),
-            icon = NextIcons.Location,
+            icon = ResonixIcons.Location,
             isSelected = selectedSortBy == Sort.By.PATH,
             onClick = { onOptionSelected(Sort.By.PATH) },
         )

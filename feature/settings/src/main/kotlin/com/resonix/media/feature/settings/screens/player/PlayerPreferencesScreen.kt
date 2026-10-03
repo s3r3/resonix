@@ -30,14 +30,14 @@ import com.resonix.media.core.model.ScreenOrientation
 import com.resonix.media.core.ui.R
 import com.resonix.media.core.ui.components.ClickablePreferenceItem
 import com.resonix.media.core.ui.components.ListSectionTitle
-import com.resonix.media.core.ui.components.NextTopAppBar
+import com.resonix.media.core.ui.components.ResonixTopAppBar
 import com.resonix.media.core.ui.components.PreferenceSlider
 import com.resonix.media.core.ui.components.PreferenceSwitch
 import com.resonix.media.core.ui.components.RadioTextButton
 import com.resonix.media.core.ui.components.rememberTvListFocusRequester
 import com.resonix.media.core.ui.components.tvFocusDown
 import com.resonix.media.core.ui.components.tvListFocus
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 import com.resonix.media.core.ui.preview.DayNightPreview
 import com.resonix.media.core.ui.theme.ResonixTheme
 import com.resonix.media.feature.settings.composables.OptionsDialog
@@ -64,12 +64,12 @@ private fun PlayerPreferencesScreenContent(
     val listFocusRequester = rememberTvListFocusRequester()
     Scaffold(
         topBar = {
-            NextTopAppBar(
+            ResonixTopAppBar(
                 title = stringResource(id = R.string.player_name),
                 navigationIcon = {
                     FilledTonalIconButton(onClick = { onAction(PlayerPreferencesUiEvent.NavigateUp) }, modifier = Modifier.tvFocusDown(listFocusRequester)) {
                         Icon(
-                            imageVector = NextIcons.ArrowBack,
+                            imageVector = ResonixIcons.ArrowBack,
                             contentDescription = stringResource(id = R.string.navigate_up),
                         )
                     }
@@ -93,7 +93,7 @@ private fun PlayerPreferencesScreenContent(
                 PreferenceSwitch(
                     title = stringResource(id = R.string.material_you_controls),
                     description = stringResource(id = R.string.material_you_controls_description),
-                    icon = NextIcons.Appearance,
+                    icon = ResonixIcons.Appearance,
                     isChecked = state.preferences.useMaterialYouControls,
                     onClick = { onAction(PlayerPreferencesUiEvent.ToggleUseMaterialYouControls) },
                     isFirstItem = true,
@@ -101,7 +101,7 @@ private fun PlayerPreferencesScreenContent(
                 PreferenceSlider(
                     title = stringResource(R.string.controller_timeout),
                     description = stringResource(R.string.seconds, state.preferences.controllerAutoHideTimeout),
-                    icon = NextIcons.Timer,
+                    icon = ResonixIcons.Timer,
                     value = state.preferences.controllerAutoHideTimeout.toFloat(),
                     valueRange = 1.0f..60.0f,
                     onValueChange = { onAction(PlayerPreferencesUiEvent.UpdateControlAutoHideTimeout(it.toInt())) },
@@ -110,7 +110,7 @@ private fun PlayerPreferencesScreenContent(
                     trailingContent = {
                         FilledIconButton(onClick = { onAction(PlayerPreferencesUiEvent.UpdateControlAutoHideTimeout(PlayerPreferences.DEFAULT_CONTROLLER_AUTO_HIDE_TIMEOUT)) }) {
                             Icon(
-                                imageVector = NextIcons.History,
+                                imageVector = ResonixIcons.History,
                                 contentDescription = stringResource(id = R.string.reset_controller_timeout),
                             )
                         }
@@ -125,14 +125,14 @@ private fun PlayerPreferencesScreenContent(
                 ClickablePreferenceItem(
                     title = stringResource(id = R.string.resume),
                     description = stringResource(id = R.string.resume_description),
-                    icon = NextIcons.Resume,
+                    icon = ResonixIcons.Resume,
                     onClick = { onAction(PlayerPreferencesUiEvent.ShowDialog(PlayerPreferenceDialog.ResumeDialog)) },
                     isFirstItem = true,
                 )
                 PreferenceSlider(
                     title = stringResource(id = R.string.default_playback_speed),
                     description = state.preferences.defaultPlaybackSpeed.toString(),
-                    icon = NextIcons.Speed,
+                    icon = ResonixIcons.Speed,
                     value = state.preferences.defaultPlaybackSpeed,
                     valueRange = 0.2f..4.0f,
                     onValueChange = { onAction(PlayerPreferencesUiEvent.UpdateDefaultPlaybackSpeed(it)) },
@@ -140,7 +140,7 @@ private fun PlayerPreferencesScreenContent(
                     trailingContent = {
                         FilledIconButton(onClick = { onAction(PlayerPreferencesUiEvent.UpdateDefaultPlaybackSpeed(1f)) }) {
                             Icon(
-                                imageVector = NextIcons.History,
+                                imageVector = ResonixIcons.History,
                                 contentDescription = stringResource(id = R.string.reset_default_playback_speed),
                             )
                         }
@@ -151,7 +151,7 @@ private fun PlayerPreferencesScreenContent(
                     description = stringResource(
                         id = R.string.autoplay_settings_description,
                     ),
-                    icon = NextIcons.Player,
+                    icon = ResonixIcons.Player,
                     isChecked = state.preferences.autoplay,
                     onClick = { onAction(PlayerPreferencesUiEvent.ToggleAutoplay) },
                 )
@@ -161,7 +161,7 @@ private fun PlayerPreferencesScreenContent(
                         description = stringResource(
                             id = R.string.pip_settings_description,
                         ),
-                        icon = NextIcons.Pip,
+                        icon = ResonixIcons.Pip,
                         isChecked = state.preferences.autoPip,
                         onClick = { onAction(PlayerPreferencesUiEvent.ToggleAutoPip) },
                     )
@@ -171,7 +171,7 @@ private fun PlayerPreferencesScreenContent(
                     description = stringResource(
                         id = R.string.background_play_description,
                     ),
-                    icon = NextIcons.Headset,
+                    icon = ResonixIcons.Headset,
                     isChecked = state.preferences.autoBackgroundPlay,
                     onClick = { onAction(PlayerPreferencesUiEvent.ToggleAutoBackgroundPlay) },
                 )
@@ -180,21 +180,21 @@ private fun PlayerPreferencesScreenContent(
                     description = stringResource(
                         id = R.string.remember_brightness_level_description,
                     ),
-                    icon = NextIcons.Brightness,
+                    icon = ResonixIcons.Brightness,
                     isChecked = state.preferences.rememberPlayerBrightness,
                     onClick = { onAction(PlayerPreferencesUiEvent.ToggleRememberBrightnessLevel) },
                 )
                 PreferenceSwitch(
                     title = stringResource(id = R.string.remember_selections),
                     description = stringResource(id = R.string.remember_selections_description),
-                    icon = NextIcons.Selection,
+                    icon = ResonixIcons.Selection,
                     isChecked = state.preferences.rememberSelections,
                     onClick = { onAction(PlayerPreferencesUiEvent.ToggleRememberSelections) },
                 )
                 ClickablePreferenceItem(
                     title = stringResource(id = R.string.player_screen_orientation),
                     description = state.preferences.playerScreenOrientation.name(),
-                    icon = NextIcons.Rotation,
+                    icon = ResonixIcons.Rotation,
                     onClick = {
                         onAction(PlayerPreferencesUiEvent.ShowDialog(PlayerPreferenceDialog.PlayerScreenOrientationDialog))
                     },
@@ -209,7 +209,7 @@ private fun PlayerPreferencesScreenContent(
                 PreferenceSlider(
                     title = stringResource(id = R.string.video_contrast),
                     description = stringResource(id = R.string.multiplier, state.preferences.videoContrast),
-                    icon = NextIcons.Contrast,
+                    icon = ResonixIcons.Contrast,
                     value = state.preferences.videoContrast,
                     valueRange = 0f..PlayerPreferences.VIDEO_CONTRAST_RANGE,
                     onValueChange = { onAction(PlayerPreferencesUiEvent.UpdateVideoContrast(it)) },
@@ -219,7 +219,7 @@ private fun PlayerPreferencesScreenContent(
                 PreferenceSlider(
                     title = stringResource(id = R.string.video_saturation),
                     description = stringResource(id = R.string.multiplier, state.preferences.videoSaturation),
-                    icon = NextIcons.Color,
+                    icon = ResonixIcons.Color,
                     value = state.preferences.videoSaturation,
                     valueRange = 0f..PlayerPreferences.VIDEO_SATURATION_RANGE,
                     onValueChange = { onAction(PlayerPreferencesUiEvent.UpdateVideoSaturation(it)) },
@@ -228,7 +228,7 @@ private fun PlayerPreferencesScreenContent(
                 PreferenceSlider(
                     title = stringResource(id = R.string.video_hue),
                     description = stringResource(id = R.string.degrees, state.preferences.videoHue),
-                    icon = NextIcons.Appearance,
+                    icon = ResonixIcons.Appearance,
                     value = state.preferences.videoHue,
                     valueRange = -PlayerPreferences.VIDEO_HUE_RANGE..PlayerPreferences.VIDEO_HUE_RANGE,
                     onValueChange = { onAction(PlayerPreferencesUiEvent.UpdateVideoHue(it)) },

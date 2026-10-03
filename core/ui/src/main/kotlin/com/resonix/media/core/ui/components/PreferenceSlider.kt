@@ -43,7 +43,7 @@ fun PreferenceSlider(
         return if (keyStep < 1f) (raw * 10).roundToInt() / 10f else raw.roundToInt().toFloat()
     }
 
-    NextSegmentedListItem(
+    ResonixSegmentedListItem(
         modifier = modifier.onPreviewKeyEvent { event ->
             if (!enabled || event.type != KeyEventType.KeyDown) return@onPreviewKeyEvent false
             when (event.key) {

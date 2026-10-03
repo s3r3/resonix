@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NextTopAppBar(
+fun ResonixTopAppBar(
     modifier: Modifier = Modifier,
     title: @Composable () -> Unit,
     navigationIcon: @Composable () -> Unit = {},
@@ -37,7 +37,7 @@ fun NextTopAppBar(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NextTopAppBar(
+fun ResonixTopAppBar(
     modifier: Modifier = Modifier,
     title: String,
     fontWeight: FontWeight? = null,
@@ -47,7 +47,7 @@ fun NextTopAppBar(
         containerColor = MaterialTheme.colorScheme.surfaceContainer,
     ),
 ) {
-    NextTopAppBar(
+    ResonixTopAppBar(
         title = {
             Text(
                 text = title,

@@ -9,6 +9,8 @@
     <application
         android:name=".ResonixApplication"
         android:label="Resonix"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:banner="@drawable/app_banner"
         android:theme="@style/Theme.Resonix">
         <activity

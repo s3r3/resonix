@@ -49,15 +49,15 @@ import com.resonix.media.core.model.NetworkProtocol
 import com.resonix.media.core.ui.R
 import com.resonix.media.core.ui.components.BindTopLevelFab
 import com.resonix.media.core.ui.components.LocalNavigationBottomPadding
-import com.resonix.media.core.ui.components.NextDialog
-import com.resonix.media.core.ui.components.NextOutlinedTextField
-import com.resonix.media.core.ui.components.NextSegmentedListItem
-import com.resonix.media.core.ui.components.NextTopAppBar
+import com.resonix.media.core.ui.components.ResonixDialog
+import com.resonix.media.core.ui.components.ResonixOutlinedTextField
+import com.resonix.media.core.ui.components.ResonixSegmentedListItem
+import com.resonix.media.core.ui.components.ResonixTopAppBar
 import com.resonix.media.core.ui.components.TopLevelFabKey
 import com.resonix.media.core.ui.components.thenIf
 import com.resonix.media.core.ui.components.tvFocusRing
 import com.resonix.media.core.ui.components.tvListFocus
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 import com.resonix.media.core.ui.extensions.copy
 import com.resonix.media.core.ui.theme.ResonixTheme
 
@@ -86,7 +86,7 @@ internal fun NetworkScreenContent(
     val showEmptyState = state.connections.isEmpty() && !state.isLoading
     BindTopLevelFab(
         key = TopLevelFabKey.NETWORK,
-        icon = NextIcons.Add,
+        icon = ResonixIcons.Add,
         upFocusRequester = fabUpFocusRequester,
         onClick = { onAction(NetworkAction.AddConnection) },
     )
@@ -94,13 +94,13 @@ internal fun NetworkScreenContent(
 
     Scaffold(
         topBar = {
-            NextTopAppBar(
+            ResonixTopAppBar(
                 title = stringResource(R.string.network),
                 fontWeight = FontWeight.Bold,
                 actions = {
                     IconButton(onClick = { onAction(NetworkAction.OpenSettings) }, modifier = Modifier.tvFocusRing()) {
                         Icon(
-                            imageVector = NextIcons.Settings,
+                            imageVector = ResonixIcons.Settings,
                             contentDescription = stringResource(R.string.settings),
                         )
                     }
@@ -158,7 +158,7 @@ internal fun NetworkScreenContent(
     }
 
     connectionToDelete?.let { connection ->
-        NextDialog(
+        ResonixDialog(
             onDismissRequest = { connectionToDelete = null },
             title = { Text(stringResource(R.string.delete_connection)) },
             content = { Text(stringResource(R.string.delete_connection_confirmation, connection.name)) },
@@ -205,7 +205,7 @@ private fun NetworkStreamCard(
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
-        NextOutlinedTextField(
+        ResonixOutlinedTextField(
             value = url,
             onValueChange = onUrlChange,
             modifier = Modifier
@@ -238,7 +238,7 @@ private fun ConnectionItem(
 ) {
     var menuExpanded by rememberSaveable { mutableStateOf(false) }
 
-    NextSegmentedListItem(
+    ResonixSegmentedListItem(
         contentPadding = PaddingValues(8.dp),
         isFirstItem = isFirstItem,
         isLastItem = isLastItem,
@@ -280,12 +280,12 @@ private fun ConnectionItem(
         trailingContent = {
             Box {
                 IconButton(onClick = { menuExpanded = true }) {
-                    Icon(NextIcons.ExtraSettings, contentDescription = null)
+                    Icon(ResonixIcons.ExtraSettings, contentDescription = null)
                 }
                 DropdownMenu(expanded = menuExpanded, onDismissRequest = { menuExpanded = false }) {
                     DropdownMenuItem(
                         text = { Text(stringResource(R.string.edit)) },
-                        leadingIcon = { Icon(NextIcons.Edit, contentDescription = null) },
+                        leadingIcon = { Icon(ResonixIcons.Edit, contentDescription = null) },
                         onClick = {
                             menuExpanded = false
                             onEdit()
@@ -293,7 +293,7 @@ private fun ConnectionItem(
                     )
                     DropdownMenuItem(
                         text = { Text(stringResource(R.string.delete)) },
-                        leadingIcon = { Icon(NextIcons.Delete, contentDescription = null) },
+                        leadingIcon = { Icon(ResonixIcons.Delete, contentDescription = null) },
                         onClick = {
                             menuExpanded = false
                             onDelete()
@@ -313,7 +313,7 @@ private fun NetworkEmptyState(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Icon(
-            imageVector = NextIcons.Network,
+            imageVector = ResonixIcons.Network,
             contentDescription = null,
             tint = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.size(48.dp),
@@ -335,10 +335,10 @@ private fun NetworkEmptyState(modifier: Modifier = Modifier) {
 }
 
 internal fun NetworkProtocol.icon(): ImageVector = when (this) {
-    NetworkProtocol.SMB -> NextIcons.Storage
-    NetworkProtocol.FTP -> NextIcons.Dns
-    NetworkProtocol.SFTP -> NextIcons.Dns
-    NetworkProtocol.WEBDAV -> NextIcons.Cloud
+    NetworkProtocol.SMB -> ResonixIcons.Storage
+    NetworkProtocol.FTP -> ResonixIcons.Dns
+    NetworkProtocol.SFTP -> ResonixIcons.Dns
+    NetworkProtocol.WEBDAV -> ResonixIcons.Cloud
 }
 
 @PreviewLightDark

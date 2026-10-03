@@ -26,12 +26,12 @@ import com.resonix.media.core.ui.R
 import com.resonix.media.core.ui.components.CancelButton
 import com.resonix.media.core.ui.components.ClickablePreferenceItem
 import com.resonix.media.core.ui.components.ListSectionTitle
-import com.resonix.media.core.ui.components.NextDialog
-import com.resonix.media.core.ui.components.NextTopAppBar
+import com.resonix.media.core.ui.components.ResonixDialog
+import com.resonix.media.core.ui.components.ResonixTopAppBar
 import com.resonix.media.core.ui.components.rememberTvListFocusRequester
 import com.resonix.media.core.ui.components.tvFocusDown
 import com.resonix.media.core.ui.components.tvListFocus
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 
 @Composable
 fun GeneralPreferencesScreen(
@@ -54,12 +54,12 @@ private fun GeneralPreferencesScreenContent(
     val listFocusRequester = rememberTvListFocusRequester()
     Scaffold(
         topBar = {
-            NextTopAppBar(
+            ResonixTopAppBar(
                 title = stringResource(id = R.string.general_name),
                 navigationIcon = {
                     FilledTonalIconButton(onClick = { onAction(GeneralPreferencesUiEvent.NavigateUp) }, modifier = Modifier.tvFocusDown(listFocusRequester)) {
                         Icon(
-                            imageVector = NextIcons.ArrowBack,
+                            imageVector = ResonixIcons.ArrowBack,
                             contentDescription = stringResource(id = R.string.navigate_up),
                         )
                     }
@@ -83,14 +83,14 @@ private fun GeneralPreferencesScreenContent(
                 ClickablePreferenceItem(
                     title = stringResource(R.string.delete_thumbnail_cache),
                     description = stringResource(R.string.delete_thumbnail_cache_description),
-                    icon = NextIcons.DeleteSweep,
+                    icon = ResonixIcons.DeleteSweep,
                     onClick = { onAction(GeneralPreferencesUiEvent.ShowDialog(GeneralPreferencesDialog.ClearThumbnailCacheDialog)) },
                     isFirstItem = true,
                 )
                 ClickablePreferenceItem(
                     title = stringResource(R.string.reset_settings),
                     description = stringResource(R.string.reset_settings_description),
-                    icon = NextIcons.History,
+                    icon = ResonixIcons.History,
                     onClick = { onAction(GeneralPreferencesUiEvent.ShowDialog(GeneralPreferencesDialog.ResetSettingsDialog)) },
                     isLastItem = true,
                 )
@@ -100,7 +100,7 @@ private fun GeneralPreferencesScreenContent(
         state.showDialog?.let { dialog ->
             when (dialog) {
                 GeneralPreferencesDialog.ClearThumbnailCacheDialog -> {
-                    NextDialog(
+                    ResonixDialog(
                         onDismissRequest = { onAction(GeneralPreferencesUiEvent.ShowDialog(null)) },
                         title = {
                             Text(
@@ -128,7 +128,7 @@ private fun GeneralPreferencesScreenContent(
                     )
                 }
                 GeneralPreferencesDialog.ResetSettingsDialog -> {
-                    NextDialog(
+                    ResonixDialog(
                         onDismissRequest = { onAction(GeneralPreferencesUiEvent.ShowDialog(null)) },
                         title = {
                             Text(

@@ -26,7 +26,7 @@ import androidx.compose.ui.zIndex
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
-fun NextSegmentedListItem(
+fun ResonixSegmentedListItem(
     modifier: Modifier = Modifier,
     selected: Boolean = false,
     enabled: Boolean = true,

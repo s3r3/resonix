@@ -24,7 +24,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.resonix.media.core.ui.R
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 
 const val CIRCULAR_PROGRESS_INDICATOR_TEST_TAG = "circularProgressIndicator"
 
@@ -64,7 +64,7 @@ fun NoVideosFound(contentPadding: PaddingValues) {
             contentAlignment = Alignment.Center,
         ) {
             Icon(
-                imageVector = NextIcons.Video,
+                imageVector = ResonixIcons.Video,
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.size(40.dp),

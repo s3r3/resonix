@@ -35,7 +35,7 @@ import com.resonix.media.core.model.ApplicationPreferences
 import com.resonix.media.core.model.Folder
 import com.resonix.media.core.model.MediaLayoutMode
 import com.resonix.media.core.ui.R
-import com.resonix.media.core.ui.components.NextSegmentedListItem
+import com.resonix.media.core.ui.components.ResonixSegmentedListItem
 import com.resonix.media.core.ui.theme.ResonixTheme
 
 @Composable
@@ -89,7 +89,7 @@ private fun FolderListItem(
     onClick: () -> Unit = {},
     onLongClick: (() -> Unit)? = null,
 ) {
-    NextSegmentedListItem(
+    ResonixSegmentedListItem(
         modifier = modifier,
         selected = selected,
         contentPadding = PaddingValues(8.dp),
@@ -194,7 +194,7 @@ private fun FolderGridItem(
     onClick: () -> Unit = {},
     onLongClick: (() -> Unit)? = null,
 ) {
-    NextSegmentedListItem(
+    ResonixSegmentedListItem(
         modifier = modifier.width(IntrinsicSize.Min),
         selected = selected,
         contentPadding = PaddingValues(8.dp),

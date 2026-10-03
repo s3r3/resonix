@@ -214,7 +214,6 @@
     <string name="donate">Δωρεά</string>
     <string name="error_opening_link">Δε βρέθηκε εφαρμογή για τη διαχείριση αυτού του συνδέσμου</string>
     <string name="support_the_developer_on">Υποστηρίξτε τον προγραμματιστή στο %1$s</string>
-    <string name="upi">UPI</string>
     <string name="kofi">Ko-fi</string>
     <string name="paypal">PayPal</string>
     <string name="list">Λίστα</string>

@@ -22,12 +22,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.resonix.media.core.ui.R
 import com.resonix.media.core.ui.components.ClickablePreferenceItem
-import com.resonix.media.core.ui.components.NextTopAppBar
+import com.resonix.media.core.ui.components.ResonixTopAppBar
 import com.resonix.media.core.ui.components.rememberRestorableFocusState
 import com.resonix.media.core.ui.components.restorableFocusGroup
 import com.resonix.media.core.ui.components.restorableFocusItem
 import com.resonix.media.core.ui.components.tvFocusDown
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 
 data class SettingsOutput(
     val navigateUp: () -> Unit,
@@ -59,7 +59,7 @@ private fun SettingsScreenContent(
 
     Scaffold(
         topBar = {
-            NextTopAppBar(
+            ResonixTopAppBar(
                 title = stringResource(id = R.string.settings),
                 navigationIcon = {
                     FilledTonalIconButton(
@@ -67,7 +67,7 @@ private fun SettingsScreenContent(
                         modifier = Modifier.tvFocusDown(focusState.requester),
                     ) {
                         Icon(
-                            imageVector = NextIcons.ArrowBack,
+                            imageVector = ResonixIcons.ArrowBack,
                             contentDescription = stringResource(id = R.string.navigate_up),
                         )
                     }
@@ -123,49 +123,49 @@ private enum class SettingRow(
     APPEARANCE(
         titleResId = R.string.appearance_name,
         descriptionResId = R.string.appearance_description,
-        icon = NextIcons.Appearance,
+        icon = ResonixIcons.Appearance,
         setting = Setting.APPEARANCE,
     ),
     MEDIA_LIBRARY(
         titleResId = R.string.media_library,
         descriptionResId = R.string.media_library_description,
-        icon = NextIcons.Movie,
+        icon = ResonixIcons.Movie,
         setting = Setting.MEDIA_LIBRARY,
     ),
     PLAYER(
         titleResId = R.string.player_name,
         descriptionResId = R.string.player_description,
-        icon = NextIcons.Player,
+        icon = ResonixIcons.Player,
         setting = Setting.PLAYER,
     ),
     GESTURES(
         titleResId = R.string.gestures_name,
         descriptionResId = R.string.gestures_description,
-        icon = NextIcons.SwipeHorizontal,
+        icon = ResonixIcons.SwipeHorizontal,
         setting = Setting.GESTURES,
     ),
     AUDIO(
         titleResId = R.string.audio,
         descriptionResId = R.string.audio_desc,
-        icon = NextIcons.Audio,
+        icon = ResonixIcons.Audio,
         setting = Setting.AUDIO,
     ),
     SUBTITLE(
         titleResId = R.string.subtitle,
         descriptionResId = R.string.subtitle_desc,
-        icon = NextIcons.Subtitle,
+        icon = ResonixIcons.Subtitle,
         setting = Setting.SUBTITLE,
     ),
     GENERAL(
         titleResId = R.string.general_name,
         descriptionResId = R.string.general_description,
-        icon = NextIcons.ExtraSettings,
+        icon = ResonixIcons.ExtraSettings,
         setting = Setting.GENERAL,
     ),
     ABOUT(
         titleResId = R.string.about_name,
         descriptionResId = R.string.about_description,
-        icon = NextIcons.Info,
+        icon = ResonixIcons.Info,
         setting = Setting.ABOUT,
     ),
 }

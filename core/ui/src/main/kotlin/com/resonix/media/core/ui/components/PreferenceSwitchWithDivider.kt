@@ -20,7 +20,7 @@ import androidx.compose.ui.input.key.onPreviewKeyEvent
 import androidx.compose.ui.input.key.type
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 
 @Composable
 fun PreferenceSwitchWithDivider(
@@ -63,7 +63,7 @@ fun PreferenceSwitchWithDivider(
                         .height(40.dp),
                     color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f),
                 )
-                NextSwitch(
+                ResonixSwitch(
                     checked = isChecked,
                     onCheckedChange = { onChecked() },
                     enabled = enabled,
@@ -79,7 +79,7 @@ fun PreferenceSwitchWithDividerPreview() {
     PreferenceSwitchWithDivider(
         title = "Title",
         description = "Description of the preference items goes here.",
-        icon = NextIcons.DoubleTap,
+        icon = ResonixIcons.DoubleTap,
         onClick = {},
         onChecked = {},
     )

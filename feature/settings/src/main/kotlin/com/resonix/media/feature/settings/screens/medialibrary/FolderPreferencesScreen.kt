@@ -26,12 +26,12 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.resonix.media.core.ui.R
 import com.resonix.media.core.ui.base.DataState
-import com.resonix.media.core.ui.components.NextTopAppBar
+import com.resonix.media.core.ui.components.ResonixTopAppBar
 import com.resonix.media.core.ui.components.SelectablePreference
 import com.resonix.media.core.ui.components.rememberTvListFocusRequester
 import com.resonix.media.core.ui.components.tvFocusDown
 import com.resonix.media.core.ui.components.tvListFocus
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 import com.resonix.media.core.ui.extensions.plus
 import com.resonix.media.core.ui.theme.ResonixTheme
 
@@ -56,7 +56,7 @@ private fun FolderPreferencesScreenContent(
     val listFocusRequester = rememberTvListFocusRequester()
     Scaffold(
         topBar = {
-            NextTopAppBar(
+            ResonixTopAppBar(
                 title = stringResource(id = R.string.manage_folders),
                 navigationIcon = {
                     FilledTonalIconButton(
@@ -64,7 +64,7 @@ private fun FolderPreferencesScreenContent(
                         modifier = Modifier.tvFocusDown(listFocusRequester),
                     ) {
                         Icon(
-                            imageVector = NextIcons.ArrowBack,
+                            imageVector = ResonixIcons.ArrowBack,
                             contentDescription = stringResource(id = R.string.navigate_up),
                         )
                     }

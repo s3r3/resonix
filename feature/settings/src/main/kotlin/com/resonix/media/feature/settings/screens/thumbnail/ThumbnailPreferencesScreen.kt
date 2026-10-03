@@ -35,14 +35,14 @@ import com.resonix.media.core.model.ThumbnailGenerationStrategy
 import com.resonix.media.core.ui.R
 import com.resonix.media.core.ui.components.CancelButton
 import com.resonix.media.core.ui.components.ListSectionTitle
-import com.resonix.media.core.ui.components.NextDialog
-import com.resonix.media.core.ui.components.NextTopAppBar
+import com.resonix.media.core.ui.components.ResonixDialog
+import com.resonix.media.core.ui.components.ResonixTopAppBar
 import com.resonix.media.core.ui.components.PreferenceSlider
 import com.resonix.media.core.ui.components.SingleSelectablePreference
 import com.resonix.media.core.ui.components.rememberTvListFocusRequester
 import com.resonix.media.core.ui.components.tvFocusDown
 import com.resonix.media.core.ui.components.tvListFocus
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 import com.resonix.media.core.ui.theme.ResonixTheme
 import kotlin.math.abs
 
@@ -77,12 +77,12 @@ private fun ThumbnailPreferencesScreenContent(
     val listFocusRequester = rememberTvListFocusRequester()
     Scaffold(
         topBar = {
-            NextTopAppBar(
+            ResonixTopAppBar(
                 title = stringResource(id = R.string.thumbnail_generation),
                 navigationIcon = {
                     FilledTonalIconButton(onClick = { onAction(ThumbnailPreferencesEvent.NavigateUp) }, modifier = Modifier.tvFocusDown(listFocusRequester)) {
                         Icon(
-                            imageVector = NextIcons.ArrowBack,
+                            imageVector = ResonixIcons.ArrowBack,
                             contentDescription = stringResource(id = R.string.navigate_up),
                         )
                     }
@@ -141,7 +141,7 @@ private fun ThumbnailPreferencesScreenContent(
                 modifier = Modifier.padding(vertical = 16.dp),
                 title = stringResource(R.string.frame_position),
                 description = stringResource(R.string.frame_position_value, frameSliderValue),
-                icon = NextIcons.Frame,
+                icon = ResonixIcons.Frame,
                 value = frameSliderValue,
                 valueRange = 0f..100f,
                 isFirstItem = true,
@@ -165,7 +165,7 @@ private fun ThumbnailPreferencesScreenContent(
                         },
                     ) {
                         Icon(
-                            imageVector = NextIcons.History,
+                            imageVector = ResonixIcons.History,
                             contentDescription = stringResource(id = R.string.reset_seek_sensitivity),
                         )
                     }
@@ -174,7 +174,7 @@ private fun ThumbnailPreferencesScreenContent(
         }
 
         pendingChange?.let { change ->
-            NextDialog(
+            ResonixDialog(
                 onDismissRequest = {
                     pendingChange = null
                     frameSliderValue = preferences.thumbnailFramePosition * 100f

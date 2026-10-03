@@ -48,7 +48,7 @@ import com.resonix.media.core.common.extensions.subtitleCacheDir
 import com.resonix.media.core.data.repository.MediaRepository
 import com.resonix.media.core.data.repository.PreferencesRepository
 import com.resonix.media.core.media.network.NetworkUri
-import com.resonix.media.core.media.network.datasource.NextDataSourceFactory
+import com.resonix.media.core.media.network.datasource.ResonixDataSourceFactory
 import com.resonix.media.core.model.LoopMode
 import com.resonix.media.core.model.PlayerPreferences
 import com.resonix.media.core.model.Resume
@@ -106,7 +106,7 @@ class PlayerService : MediaSessionService() {
 
     private val preferencesRepository: PreferencesRepository by inject()
 
-    private val dataSourceFactory: NextDataSourceFactory by inject()
+    private val dataSourceFactory: ResonixDataSourceFactory by inject()
 
     private val mediaRepository: MediaRepository by inject()
 

@@ -27,7 +27,7 @@ import androidx.core.net.toUri
 import com.resonix.media.core.media.network.opensubtitles.OpenSubtitlesSearchResult
 import com.resonix.media.core.media.network.opensubtitles.toOpenSubtitlesLanguage
 import com.resonix.media.core.ui.R
-import com.resonix.media.core.ui.components.NextOutlinedTextField
+import com.resonix.media.core.ui.components.ResonixOutlinedTextField
 import com.resonix.media.feature.player.PlayerAction
 import com.resonix.media.feature.player.PlayerUiState
 import com.resonix.media.feature.player.state.SubtitleOptionsEvent
@@ -66,14 +66,14 @@ fun OnlineSubtitleDialog(
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
-                NextOutlinedTextField(
+                ResonixOutlinedTextField(
                     label = { Text(text = stringResource(R.string.subtitle_search_query)) },
                     value = query,
                     onValueChange = { query = it },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(),
                 )
-                NextOutlinedTextField(
+                ResonixOutlinedTextField(
                     label = { Text(text = stringResource(R.string.subtitle_language)) },
                     value = language,
                     onValueChange = { language = it },

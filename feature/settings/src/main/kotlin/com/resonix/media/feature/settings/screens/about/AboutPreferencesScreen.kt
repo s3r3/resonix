@@ -1,6 +1,5 @@
 package com.resonix.media.feature.settings.screens.about
 
-import android.content.ClipData
 import android.content.Context
 import android.widget.Toast
 import androidx.compose.animation.core.RepeatMode
@@ -36,7 +35,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -46,8 +44,6 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.ClipEntry
-import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.UriHandler
@@ -61,17 +57,15 @@ import com.resonix.media.core.common.extensions.appIcon
 import com.resonix.media.core.ui.R
 import com.resonix.media.core.ui.components.ClickablePreferenceItem
 import com.resonix.media.core.ui.components.ListSectionTitle
-import com.resonix.media.core.ui.components.NextTopAppBar
+import com.resonix.media.core.ui.components.ResonixTopAppBar
 import com.resonix.media.core.ui.components.rememberTvListFocusRequester
 import com.resonix.media.core.ui.components.tvFocusDown
 import com.resonix.media.core.ui.components.tvListFocus
-import com.resonix.media.core.ui.designsystem.NextIcons
-import kotlinx.coroutines.launch
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 
-private const val GITHUB_URL = "https://github.com"
-private const val KOFI_URL = "https://ko-fi.com/anilbeesetti"
-private const val PAYPAL_URL = "https://paypal.me/AnilBeesetti"
-private const val UPI_ID = "anilbeesetti10@oksbi"
+private const val GITHUB_URL = "https://github.com/s3r3"
+private const val KOFI_URL = "https://ko-fi.com/s3r3a"
+private const val PAYPAL_URL = "https://paypal.me/MuhammadFarid852"
 
 @Composable
 fun AboutPreferencesScreen(viewModel: AboutPreferencesViewModel) {
@@ -87,18 +81,16 @@ private fun AboutPreferencesScreenContent(
 ) {
     val context = LocalContext.current
     val uriHandler = LocalUriHandler.current
-    val clipboard = LocalClipboard.current
-    val scope = rememberCoroutineScope()
 
     val listFocusRequester = rememberTvListFocusRequester()
     Scaffold(
         topBar = {
-            NextTopAppBar(
+            ResonixTopAppBar(
                 title = stringResource(id = R.string.about_name),
                 navigationIcon = {
                     FilledTonalIconButton(onClick = { onAction(AboutPreferencesAction.NavigateUp) }, modifier = Modifier.tvFocusDown(listFocusRequester)) {
                         Icon(
-                            imageVector = NextIcons.ArrowBack,
+                            imageVector = ResonixIcons.ArrowBack,
                             contentDescription = stringResource(id = R.string.navigate_up),
                         )
                     }
@@ -151,17 +143,6 @@ private fun AboutPreferencesScreenContent(
                             uri = PAYPAL_URL,
                             context = context,
                         )
-                    },
-                )
-                ClickablePreferenceItem(
-                    title = stringResource(R.string.upi),
-                    description = UPI_ID,
-                    icon = ImageVector.vectorResource(R.drawable.ic_upi),
-                    onClick = {
-                        scope.launch {
-                            clipboard.setClipEntry(ClipEntry(ClipData.newPlainText("text", UPI_ID)))
-                            Toast.makeText(context, "copied to clipboard", Toast.LENGTH_SHORT).show()
-                        }
                     },
                     isLastItem = true,
                 )

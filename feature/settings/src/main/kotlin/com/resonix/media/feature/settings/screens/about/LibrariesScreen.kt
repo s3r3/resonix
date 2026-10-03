@@ -29,9 +29,9 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.resonix.media.core.ui.R
-import com.resonix.media.core.ui.components.NextSegmentedListItem
-import com.resonix.media.core.ui.components.NextTopAppBar
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.components.ResonixSegmentedListItem
+import com.resonix.media.core.ui.components.ResonixTopAppBar
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 import com.resonix.media.core.ui.extensions.plus
 
 @Composable
@@ -51,12 +51,12 @@ private fun LibrariesScreenContent(
 
     Scaffold(
         topBar = {
-            NextTopAppBar(
+            ResonixTopAppBar(
                 title = stringResource(id = R.string.libraries),
                 navigationIcon = {
                     FilledTonalIconButton(onClick = { onAction(LibrariesAction.NavigateUp) }) {
                         Icon(
-                            imageVector = NextIcons.ArrowBack,
+                            imageVector = ResonixIcons.ArrowBack,
                             contentDescription = stringResource(id = R.string.navigate_up),
                         )
                     }
@@ -71,7 +71,7 @@ private fun LibrariesScreenContent(
             verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
         ) {
             itemsIndexed(state.libraries, key = { _, library -> library.uniqueId }) { index, library ->
-                NextSegmentedListItem(
+                ResonixSegmentedListItem(
                     content = {
                         Row(
                             modifier = Modifier.fillMaxWidth(),

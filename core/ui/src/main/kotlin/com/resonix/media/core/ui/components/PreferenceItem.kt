@@ -19,7 +19,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
@@ -35,7 +35,7 @@ fun PreferenceItem(
     isLastItem: Boolean = false,
     trailingContent: @Composable () -> Unit = {},
 ) {
-    NextSegmentedListItem(
+    ResonixSegmentedListItem(
         modifier = modifier,
         onClick = onClick,
         onLongClick = onLongClick,
@@ -75,7 +75,7 @@ fun SelectablePreference(
     isFirstItem: Boolean = false,
     isLastItem: Boolean = false,
 ) {
-    NextSegmentedListItem(
+    ResonixSegmentedListItem(
         modifier = modifier,
         onClick = onClick,
         onLongClick = onLongClick,
@@ -123,7 +123,7 @@ fun SingleSelectablePreference(
     isFirstItem: Boolean = false,
     isLastItem: Boolean = false,
 ) {
-    NextSegmentedListItem(
+    ResonixSegmentedListItem(
         modifier = modifier,
         onClick = onClick,
         onLongClick = onLongClick,
@@ -158,7 +158,7 @@ fun PreferenceItemPreview() {
     PreferenceItem(
         title = "Title",
         description = "Description of the preference item goes here.",
-        icon = NextIcons.DoubleTap,
+        icon = ResonixIcons.DoubleTap,
         enabled = true,
     )
 }

@@ -24,13 +24,13 @@ import com.resonix.media.core.model.ThumbnailGenerationStrategy
 import com.resonix.media.core.ui.R
 import com.resonix.media.core.ui.components.ClickablePreferenceItem
 import com.resonix.media.core.ui.components.ListSectionTitle
-import com.resonix.media.core.ui.components.NextTopAppBar
+import com.resonix.media.core.ui.components.ResonixTopAppBar
 import com.resonix.media.core.ui.components.PreferenceSwitch
 import com.resonix.media.core.ui.components.rememberRestorableFocusState
 import com.resonix.media.core.ui.components.restorableFocusGroup
 import com.resonix.media.core.ui.components.restorableFocusItem
 import com.resonix.media.core.ui.components.tvFocusDown
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 import com.resonix.media.core.ui.theme.ResonixTheme
 
 @Composable
@@ -57,12 +57,12 @@ private fun MediaLibraryPreferencesScreenContent(
 
     Scaffold(
         topBar = {
-            NextTopAppBar(
+            ResonixTopAppBar(
                 title = stringResource(id = R.string.media_library),
                 navigationIcon = {
                     FilledTonalIconButton(onClick = { onAction(MediaLibraryPreferencesUiEvent.NavigateUp) }, modifier = Modifier.tvFocusDown(focusState.requester)) {
                         Icon(
-                            imageVector = NextIcons.ArrowBack,
+                            imageVector = ResonixIcons.ArrowBack,
                             contentDescription = stringResource(id = R.string.navigate_up),
                         )
                     }
@@ -89,7 +89,7 @@ private fun MediaLibraryPreferencesScreenContent(
                     description = stringResource(
                         id = R.string.mark_last_played_media_desc,
                     ),
-                    icon = NextIcons.Check,
+                    icon = ResonixIcons.Check,
                     isChecked = preferences.markLastPlayedMedia,
                     onClick = { onAction(MediaLibraryPreferencesUiEvent.ToggleMarkLastPlayedMedia) },
                     isFirstItem = true,
@@ -105,7 +105,7 @@ private fun MediaLibraryPreferencesScreenContent(
                     modifier = Modifier.restorableFocusItem(focusState, "manage_folders"),
                     title = stringResource(id = R.string.manage_folders),
                     description = stringResource(id = R.string.manage_folders_desc),
-                    icon = NextIcons.FolderOff,
+                    icon = ResonixIcons.FolderOff,
                     onClick = { onAction(MediaLibraryPreferencesUiEvent.OpenFolders) },
                     isFirstItem = true,
                     isLastItem = true,
@@ -124,7 +124,7 @@ private fun MediaLibraryPreferencesScreenContent(
                         ThumbnailGenerationStrategy.FRAME_AT_PERCENTAGE -> stringResource(R.string.frame_at_position)
                         ThumbnailGenerationStrategy.HYBRID -> stringResource(id = R.string.hybrid)
                     },
-                    icon = NextIcons.Image,
+                    icon = ResonixIcons.Image,
                     onClick = { onAction(MediaLibraryPreferencesUiEvent.OpenThumbnails) },
                     isFirstItem = true,
                     isLastItem = true,

@@ -102,15 +102,15 @@ import com.resonix.media.core.ui.components.BindTopLevelBottomBarVisible
 import com.resonix.media.core.ui.components.BindTopLevelFab
 import com.resonix.media.core.ui.components.CancelButton
 import com.resonix.media.core.ui.components.LocalNavigationBottomPadding
-import com.resonix.media.core.ui.components.NextDialog
-import com.resonix.media.core.ui.components.NextOutlinedTextField
-import com.resonix.media.core.ui.components.NextTopAppBar
+import com.resonix.media.core.ui.components.ResonixDialog
+import com.resonix.media.core.ui.components.ResonixOutlinedTextField
+import com.resonix.media.core.ui.components.ResonixTopAppBar
 import com.resonix.media.core.ui.components.TopLevelFabKey
 import com.resonix.media.core.ui.components.rememberRestorableFocusState
 import com.resonix.media.core.ui.components.thenIf
 import com.resonix.media.core.ui.components.tvFocusRing
 import com.resonix.media.core.ui.composables.PermissionMissingView
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 import com.resonix.media.core.ui.extensions.copy
 import com.resonix.media.core.ui.preview.DayNightPreview
 import com.resonix.media.core.ui.preview.VideoPickerPreviewParameterProvider
@@ -208,7 +208,7 @@ internal fun MediaPickerScreenContent(
     if (state.folderName == null) {
         BindTopLevelFab(
             key = TopLevelFabKey.MEDIA,
-            icon = NextIcons.Play,
+            icon = ResonixIcons.Play,
             onClick = onFabClick,
         )
     }
@@ -218,7 +218,7 @@ internal fun MediaPickerScreenContent(
 
     Scaffold(
         topBar = {
-            NextTopAppBar(
+            ResonixTopAppBar(
                 title = {
                     val titleText = (state.folderName ?: stringResource(R.string.app_name))
                         .takeIf { !selectionManager.isInSelectionMode } ?: ""
@@ -242,7 +242,7 @@ internal fun MediaPickerScreenContent(
                             horizontalArrangement = Arrangement.spacedBy(8.dp),
                         ) {
                             Icon(
-                                imageVector = NextIcons.Close,
+                                imageVector = ResonixIcons.Close,
                                 contentDescription = stringResource(id = R.string.navigate_up),
                             )
                             Text(
@@ -256,7 +256,7 @@ internal fun MediaPickerScreenContent(
                             modifier = topBarDownModifier.tvFocusRing(isTv),
                         ) {
                             Icon(
-                                imageVector = NextIcons.ArrowBack,
+                                imageVector = ResonixIcons.ArrowBack,
                                 contentDescription = stringResource(id = R.string.navigate_up),
                             )
                         }
@@ -279,9 +279,9 @@ internal fun MediaPickerScreenContent(
                         ) {
                             Icon(
                                 imageVector = if (selectedItemsSize != totalItemsSize) {
-                                    NextIcons.SelectAll
+                                    ResonixIcons.SelectAll
                                 } else {
-                                    NextIcons.DeselectAll
+                                    ResonixIcons.DeselectAll
                                 },
                                 contentDescription = if (selectedItemsSize != totalItemsSize) {
                                     stringResource(R.string.select_all)
@@ -296,7 +296,7 @@ internal fun MediaPickerScreenContent(
                             modifier = topBarDownModifier.tvFocusRing(isTv),
                         ) {
                             Icon(
-                                imageVector = NextIcons.Search,
+                                imageVector = ResonixIcons.Search,
                                 contentDescription = stringResource(id = R.string.search),
                             )
                         }
@@ -305,7 +305,7 @@ internal fun MediaPickerScreenContent(
                             modifier = topBarDownModifier.tvFocusRing(isTv),
                         ) {
                             Icon(
-                                imageVector = NextIcons.DashBoard,
+                                imageVector = ResonixIcons.DashBoard,
                                 contentDescription = stringResource(id = R.string.menu),
                             )
                         }
@@ -314,7 +314,7 @@ internal fun MediaPickerScreenContent(
                             modifier = topBarDownModifier.tvFocusRing(isTv),
                         ) {
                             Icon(
-                                imageVector = NextIcons.Settings,
+                                imageVector = ResonixIcons.Settings,
                                 contentDescription = stringResource(id = R.string.settings),
                             )
                         }
@@ -378,7 +378,7 @@ internal fun MediaPickerScreenContent(
                         .focusProperties { if (isTv && hasMedia) up = focusState.requester },
                     shape = MaterialTheme.shapes.large,
                 ) {
-                    Icon(imageVector = NextIcons.Play, contentDescription = stringResource(R.string.play))
+                    Icon(imageVector = ResonixIcons.Play, contentDescription = stringResource(R.string.play))
                 }
             }
         },
@@ -635,7 +635,7 @@ private fun DeleteConfirmationDialog(
     val selectedFolders = selectionItems.filterIsInstance<SelectionItem.Folder>()
     var permanently by rememberSaveable { mutableStateOf(false) }
 
-    NextDialog(
+    ResonixDialog(
         onDismissRequest = onCancel,
         title = {
             Text(
@@ -708,7 +708,7 @@ private fun HideFlowDialogs(
 
         is HideFlowState.ConfirmHide -> {
             val count = hideFlow.items.size
-            NextDialog(
+            ResonixDialog(
                 onDismissRequest = onDismiss,
                 title = {
                     Text(
@@ -857,7 +857,7 @@ private fun SetupPinHeader(
             contentAlignment = Alignment.Center,
         ) {
             Icon(
-                imageVector = NextIcons.Lock,
+                imageVector = ResonixIcons.Lock,
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(32.dp),
@@ -915,7 +915,7 @@ private fun PlaylistTargetDialog(
     if (showCreateDialog) {
         var name by rememberSaveable { mutableStateOf("") }
         val trimmedName = name.trim()
-        NextDialog(
+        ResonixDialog(
             onDismissRequest = {
                 if (!state.isSaving) showCreateDialog = false
             },
@@ -924,7 +924,7 @@ private fun PlaylistTargetDialog(
             },
             content = {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    NextOutlinedTextField(
+                    ResonixOutlinedTextField(
                         value = name,
                         onValueChange = { name = it },
                         label = {
@@ -965,7 +965,7 @@ private fun PlaylistTargetDialog(
         return
     }
 
-    NextDialog(
+    ResonixDialog(
         onDismissRequest = {
             if (!state.isSaving) onDismissRequest()
         },
@@ -981,7 +981,7 @@ private fun PlaylistTargetDialog(
                         .fillMaxWidth()
                         .tvFocusRing(),
                 ) {
-                    Icon(NextIcons.Add, contentDescription = null)
+                    Icon(ResonixIcons.Add, contentDescription = null)
                     Spacer(Modifier.size(8.dp))
                     Text(
                         text = stringResource(R.string.create_new_playlist),
@@ -1010,7 +1010,7 @@ private fun PlaylistTargetDialog(
                                 .tvFocusRing(),
                         ) {
                             Icon(
-                                imageVector = NextIcons.Playlist,
+                                imageVector = ResonixIcons.Playlist,
                                 contentDescription = null,
                                 tint = MaterialTheme.colorScheme.primary,
                             )
@@ -1122,46 +1122,46 @@ private fun SelectionActionsSheet(
                 SelectionAction(
                     modifier = Modifier.thenIf(isTv) { focusRequester(firstActionFocusRequester) },
                     isTv = isTv,
-                    imageVector = NextIcons.Play,
+                    imageVector = ResonixIcons.Play,
                     title = stringResource(R.string.play),
                     onClick = onPlayAction,
                 )
                 SelectionAction(
                     isTv = isTv,
-                    imageVector = NextIcons.PlaylistAdd,
+                    imageVector = ResonixIcons.PlaylistAdd,
                     title = stringResource(R.string.add_to_playlist),
                     onClick = onAddToPlaylistAction,
                 )
                 if (showRenameAction) {
                     SelectionAction(
                         isTv = isTv,
-                        imageVector = NextIcons.Edit,
+                        imageVector = ResonixIcons.Edit,
                         title = stringResource(R.string.rename),
                         onClick = onRenameAction,
                     )
                 }
                 SelectionAction(
                     isTv = isTv,
-                    imageVector = NextIcons.Share,
+                    imageVector = ResonixIcons.Share,
                     title = stringResource(R.string.share),
                     onClick = onShareAction,
                 )
                 SelectionAction(
                     isTv = isTv,
-                    imageVector = NextIcons.Copy,
+                    imageVector = ResonixIcons.Copy,
                     title = stringResource(R.string.copy),
                     onClick = onCopyAction,
                 )
                 SelectionAction(
                     isTv = isTv,
-                    imageVector = NextIcons.Move,
+                    imageVector = ResonixIcons.Move,
                     title = stringResource(R.string.move),
                     onClick = onMoveAction,
                 )
                 if (showInfoAction) {
                     SelectionAction(
                         isTv = isTv,
-                        imageVector = NextIcons.Info,
+                        imageVector = ResonixIcons.Info,
                         title = stringResource(id = R.string.info),
                         onClick = onInfoAction,
                     )
@@ -1169,14 +1169,14 @@ private fun SelectionActionsSheet(
                 if (showHideAction) {
                     SelectionAction(
                         isTv = isTv,
-                        imageVector = NextIcons.HideSource,
+                        imageVector = ResonixIcons.HideSource,
                         title = stringResource(id = R.string.hide),
                         onClick = onHideAction,
                     )
                 }
                 SelectionAction(
                     isTv = isTv,
-                    imageVector = NextIcons.Delete,
+                    imageVector = ResonixIcons.Delete,
                     title = stringResource(id = R.string.delete),
                     onClick = onDeleteAction,
                 )
@@ -1220,7 +1220,7 @@ private fun ButtonPreview() {
     Surface {
         TextIconToggleButton(
             text = "Title",
-            icon = NextIcons.Title,
+            icon = ResonixIcons.Title,
             onClick = {},
         )
     }

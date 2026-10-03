@@ -24,7 +24,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.resonix.media.core.model.ThemeConfig
 import com.resonix.media.core.ui.R
 import com.resonix.media.core.ui.components.ListSectionTitle
-import com.resonix.media.core.ui.components.NextTopAppBar
+import com.resonix.media.core.ui.components.ResonixTopAppBar
 import com.resonix.media.core.ui.components.ClickablePreferenceItem
 import com.resonix.media.core.ui.components.PreferenceSwitch
 import com.resonix.media.core.ui.components.PreferenceSwitchWithDivider
@@ -32,7 +32,7 @@ import com.resonix.media.core.ui.components.RadioTextButton
 import com.resonix.media.core.ui.components.rememberTvListFocusRequester
 import com.resonix.media.core.ui.components.tvFocusDown
 import com.resonix.media.core.ui.components.tvListFocus
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 import com.resonix.media.core.ui.theme.ResonixTheme
 import com.resonix.media.core.ui.theme.supportsDynamicTheming
 import com.resonix.media.feature.settings.composables.OptionsDialog
@@ -72,12 +72,12 @@ private fun AppearancePreferencesScreenContent(
     val listFocusRequester = rememberTvListFocusRequester()
     Scaffold(
         topBar = {
-            NextTopAppBar(
+            ResonixTopAppBar(
                 title = stringResource(id = R.string.appearance_name),
                 navigationIcon = {
                     FilledTonalIconButton(onClick = { onAction(AppearancePreferencesEvent.NavigateUp) }, modifier = Modifier.tvFocusDown(listFocusRequester)) {
                         Icon(
-                            imageVector = NextIcons.ArrowBack,
+                            imageVector = ResonixIcons.ArrowBack,
                             contentDescription = stringResource(id = R.string.navigate_up),
                         )
                     }
@@ -103,14 +103,14 @@ private fun AppearancePreferencesScreenContent(
                     description = state.preferences.themeConfig.name(),
                     isChecked = state.preferences.themeConfig == ThemeConfig.ON,
                     onChecked = { onAction(AppearancePreferencesEvent.ToggleDarkTheme) },
-                    icon = NextIcons.DarkMode,
+                    icon = ResonixIcons.DarkMode,
                     onClick = { onAction(AppearancePreferencesEvent.ShowDialog(AppearancePreferenceDialog.Theme)) },
                     isFirstItem = true,
                 )
                 PreferenceSwitch(
                     title = stringResource(R.string.high_contrast_dark_theme),
                     description = stringResource(R.string.high_contrast_dark_theme_desc),
-                    icon = NextIcons.Contrast,
+                    icon = ResonixIcons.Contrast,
                     isChecked = state.preferences.useHighContrastDarkTheme,
                     onClick = { onAction(AppearancePreferencesEvent.ToggleUseHighContrastDarkTheme) },
                     isLastItem = !supportsDynamicTheming(),
@@ -119,7 +119,7 @@ private fun AppearancePreferencesScreenContent(
                     PreferenceSwitch(
                         title = stringResource(id = R.string.dynamic_theme),
                         description = stringResource(id = R.string.dynamic_theme_description),
-                        icon = NextIcons.Appearance,
+                        icon = ResonixIcons.Appearance,
                         isChecked = state.preferences.useDynamicColors,
                         onClick = { onAction(AppearancePreferencesEvent.ToggleUseDynamicColors) },
                     )
@@ -127,7 +127,7 @@ private fun AppearancePreferencesScreenContent(
                 ClickablePreferenceItem(
                     title = stringResource(R.string.accent_color),
                     description = stringResource(R.string.accent_color_desc),
-                    icon = NextIcons.Appearance,
+                    icon = ResonixIcons.Appearance,
                     onClick = { onAction(AppearancePreferencesEvent.ShowDialog(AppearancePreferenceDialog.AccentColor)) },
                     isLastItem = true,
                 )

@@ -76,14 +76,14 @@ import com.resonix.media.core.model.Sort
 import com.resonix.media.core.model.Video
 import com.resonix.media.core.ui.R
 import com.resonix.media.core.ui.components.CancelButton
-import com.resonix.media.core.ui.components.NextDialog
-import com.resonix.media.core.ui.components.NextTopAppBar
+import com.resonix.media.core.ui.components.ResonixDialog
+import com.resonix.media.core.ui.components.ResonixTopAppBar
 import com.resonix.media.core.ui.components.rememberRestorableFocusState
 import com.resonix.media.core.ui.components.restorableFocusGroup
 import com.resonix.media.core.ui.components.restorableFocusItem
 import com.resonix.media.core.ui.components.thenIf
 import com.resonix.media.core.ui.components.tvFocusRing
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 import com.resonix.media.core.ui.extensions.copy
 import com.resonix.media.core.ui.theme.ResonixTheme
 import com.resonix.media.feature.media.composables.CenterCircularProgressBar
@@ -197,7 +197,7 @@ private fun VaultPinContent(
 ) {
     Scaffold(
         topBar = {
-            NextTopAppBar(
+            ResonixTopAppBar(
                 title = "",
                 navigationIcon = {
                     FilledTonalIconButton(
@@ -205,7 +205,7 @@ private fun VaultPinContent(
                         modifier = Modifier.tvFocusRing(),
                     ) {
                         Icon(
-                            imageVector = NextIcons.ArrowBack,
+                            imageVector = ResonixIcons.ArrowBack,
                             contentDescription = stringResource(id = R.string.navigate_up),
                         )
                     }
@@ -338,7 +338,7 @@ private fun PinEntryHeader(
             contentAlignment = Alignment.Center,
         ) {
             Icon(
-                imageVector = NextIcons.Lock,
+                imageVector = ResonixIcons.Lock,
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(32.dp),
@@ -396,7 +396,7 @@ private fun VaultGalleryContent(
 
     Scaffold(
         topBar = {
-            NextTopAppBar(
+            ResonixTopAppBar(
                 title = {
                     val titleText = stringResource(R.string.hidden_videos).takeIf { !selectionManager.isInSelectionMode } ?: ""
                     Text(
@@ -419,7 +419,7 @@ private fun VaultGalleryContent(
                             horizontalArrangement = Arrangement.spacedBy(8.dp),
                         ) {
                             Icon(
-                                imageVector = NextIcons.Close,
+                                imageVector = ResonixIcons.Close,
                                 contentDescription = stringResource(id = R.string.navigate_up),
                             )
                             Text(
@@ -433,7 +433,7 @@ private fun VaultGalleryContent(
                             modifier = Modifier.tvFocusRing(),
                         ) {
                             Icon(
-                                imageVector = NextIcons.ArrowBack,
+                                imageVector = ResonixIcons.ArrowBack,
                                 contentDescription = stringResource(id = R.string.navigate_up),
                             )
                         }
@@ -452,7 +452,7 @@ private fun VaultGalleryContent(
                             modifier = Modifier.tvFocusRing(),
                         ) {
                             Icon(
-                                imageVector = if (selectedCount != totalCount) NextIcons.SelectAll else NextIcons.DeselectAll,
+                                imageVector = if (selectedCount != totalCount) ResonixIcons.SelectAll else ResonixIcons.DeselectAll,
                                 contentDescription = if (selectedCount != totalCount) {
                                     stringResource(R.string.select_all)
                                 } else {
@@ -466,7 +466,7 @@ private fun VaultGalleryContent(
                             modifier = Modifier.tvFocusRing(),
                         ) {
                             Icon(
-                                imageVector = NextIcons.Sensitivity,
+                                imageVector = ResonixIcons.Sensitivity,
                                 contentDescription = stringResource(R.string.sort_by),
                             )
                         }
@@ -475,7 +475,7 @@ private fun VaultGalleryContent(
                             modifier = Modifier.tvFocusRing(),
                         ) {
                             Icon(
-                                imageVector = NextIcons.Settings,
+                                imageVector = ResonixIcons.Settings,
                                 contentDescription = stringResource(R.string.vault_settings),
                             )
                         }
@@ -593,7 +593,7 @@ private fun VaultGalleryContent(
     }
 
     if (showDeleteConfirmation) {
-        NextDialog(
+        ResonixDialog(
             onDismissRequest = { showDeleteConfirmation = false },
             title = {
                 Text(
@@ -621,7 +621,7 @@ private fun VaultGalleryContent(
     }
 
     if (showUnhideConfirmation) {
-        NextDialog(
+        ResonixDialog(
             onDismissRequest = { showUnhideConfirmation = false },
             title = { Text(text = stringResource(R.string.unhide)) },
             content = {
@@ -675,7 +675,7 @@ private fun VaultEmptyState(contentPadding: PaddingValues) {
             contentAlignment = Alignment.Center,
         ) {
             Icon(
-                imageVector = NextIcons.Lock,
+                imageVector = ResonixIcons.Lock,
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.size(40.dp),
@@ -709,7 +709,7 @@ private fun VaultSortDialog(
         Sort.By.SIZE to stringResource(R.string.size),
         Sort.By.LENGTH to stringResource(R.string.duration),
     )
-    NextDialog(
+    ResonixDialog(
         onDismissRequest = onDismiss,
         title = { Text(text = stringResource(R.string.sort_by)) },
         content = {
@@ -732,7 +732,7 @@ private fun VaultSortDialog(
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
                         Icon(
-                            imageVector = if (selected) NextIcons.CheckBox else NextIcons.CheckBoxOutline,
+                            imageVector = if (selected) ResonixIcons.CheckBox else ResonixIcons.CheckBoxOutline,
                             contentDescription = null,
                             tint = if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
                         )
@@ -741,7 +741,7 @@ private fun VaultSortDialog(
                         if (selected) {
                             Spacer(modifier = Modifier.size(8.dp))
                             Icon(
-                                imageVector = if (sort.order == Sort.Order.ASCENDING) NextIcons.ArrowUpward else NextIcons.ArrowDownward,
+                                imageVector = if (sort.order == Sort.Order.ASCENDING) ResonixIcons.ArrowUpward else ResonixIcons.ArrowDownward,
                                 contentDescription = null,
                                 tint = MaterialTheme.colorScheme.primary,
                                 modifier = Modifier.size(16.dp),
@@ -814,27 +814,27 @@ private fun VaultSelectionActionsSheet(
                 SelectionAction(
                     modifier = Modifier.thenIf(isTv) { focusRequester(firstActionFocusRequester) },
                     isTv = isTv,
-                    imageVector = NextIcons.Play,
+                    imageVector = ResonixIcons.Play,
                     title = stringResource(R.string.play),
                     onClick = onPlayAction,
                 )
                 if (showInfoAction) {
                     SelectionAction(
                         isTv = isTv,
-                        imageVector = NextIcons.Info,
+                        imageVector = ResonixIcons.Info,
                         title = stringResource(R.string.info),
                         onClick = onInfoAction,
                     )
                 }
                 SelectionAction(
                     isTv = isTv,
-                    imageVector = NextIcons.Lock,
+                    imageVector = ResonixIcons.Lock,
                     title = stringResource(R.string.unhide),
                     onClick = onUnhideAction,
                 )
                 SelectionAction(
                     isTv = isTv,
-                    imageVector = NextIcons.Delete,
+                    imageVector = ResonixIcons.Delete,
                     title = stringResource(R.string.delete),
                     onClick = onDeleteAction,
                 )

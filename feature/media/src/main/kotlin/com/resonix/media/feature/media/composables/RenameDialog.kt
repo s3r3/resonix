@@ -16,8 +16,8 @@ import androidx.compose.ui.res.stringResource
 import com.resonix.media.core.ui.R
 import com.resonix.media.core.ui.components.CancelButton
 import com.resonix.media.core.ui.components.DoneButton
-import com.resonix.media.core.ui.components.NextDialog
-import com.resonix.media.core.ui.components.NextOutlinedTextField
+import com.resonix.media.core.ui.components.ResonixDialog
+import com.resonix.media.core.ui.components.ResonixOutlinedTextField
 import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.delay
 
@@ -29,11 +29,11 @@ fun RenameDialog(
 ) {
     var mediaName by rememberSaveable { mutableStateOf(name) }
     val focusRequester = remember { FocusRequester() }
-    NextDialog(
+    ResonixDialog(
         onDismissRequest = onDismiss,
         title = { Text(stringResource(R.string.rename_to)) },
         content = {
-            NextOutlinedTextField(
+            ResonixOutlinedTextField(
                 value = mediaName,
                 onValueChange = { mediaName = it },
                 modifier = Modifier

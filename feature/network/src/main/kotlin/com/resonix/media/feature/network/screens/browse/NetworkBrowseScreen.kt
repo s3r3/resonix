@@ -47,11 +47,11 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.resonix.media.core.common.Utils
 import com.resonix.media.core.model.NetworkFile
 import com.resonix.media.core.ui.R
-import com.resonix.media.core.ui.components.NextSegmentedListItem
-import com.resonix.media.core.ui.components.NextTopAppBar
+import com.resonix.media.core.ui.components.ResonixSegmentedListItem
+import com.resonix.media.core.ui.components.ResonixTopAppBar
 import com.resonix.media.core.ui.components.tvFocusRing
 import com.resonix.media.core.ui.components.tvListFocus
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 import com.resonix.media.core.ui.extensions.copy
 import java.util.Date
 
@@ -75,12 +75,12 @@ internal fun NetworkBrowseScreenContent(
 ) {
     Scaffold(
         topBar = {
-            NextTopAppBar(
+            ResonixTopAppBar(
                 title = state.title,
                 navigationIcon = {
                     FilledTonalIconButton(onClick = { onAction(NetworkBrowseAction.NavigateUp) }, modifier = Modifier.tvFocusRing()) {
                         Icon(
-                            imageVector = NextIcons.ArrowBack,
+                            imageVector = ResonixIcons.ArrowBack,
                             contentDescription = stringResource(R.string.navigate_up),
                         )
                     }
@@ -91,7 +91,7 @@ internal fun NetworkBrowseScreenContent(
                             onClick = { onAction(NetworkBrowseAction.PlayAll) },
                             modifier = Modifier.tvFocusRing(),
                         ) {
-                            Icon(NextIcons.Play, contentDescription = stringResource(R.string.play_all))
+                            Icon(ResonixIcons.Play, contentDescription = stringResource(R.string.play_all))
                         }
                     }
                 },
@@ -225,7 +225,7 @@ private fun NetworkFileItem(
     playedPercentage: Float?,
     onClick: () -> Unit,
 ) {
-    NextSegmentedListItem(
+    ResonixSegmentedListItem(
         contentPadding = PaddingValues(8.dp),
         isFirstItem = isFirstItem,
         isLastItem = isLastItem,
@@ -256,7 +256,7 @@ private fun NetworkFileItem(
                     contentAlignment = Alignment.Center,
                 ) {
                     Icon(
-                        imageVector = NextIcons.Video,
+                        imageVector = ResonixIcons.Video,
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.surfaceColorAtElevation(100.dp),
                         modifier = Modifier.fillMaxSize(0.5f),

@@ -49,14 +49,14 @@ import com.resonix.media.core.ui.R
 import com.resonix.media.core.ui.base.DataState
 import com.resonix.media.core.ui.components.BindTopLevelFab
 import com.resonix.media.core.ui.components.LocalNavigationBottomPadding
-import com.resonix.media.core.ui.components.NextDialog
-import com.resonix.media.core.ui.components.NextOutlinedTextField
-import com.resonix.media.core.ui.components.NextSegmentedListItem
-import com.resonix.media.core.ui.components.NextTopAppBar
+import com.resonix.media.core.ui.components.ResonixDialog
+import com.resonix.media.core.ui.components.ResonixOutlinedTextField
+import com.resonix.media.core.ui.components.ResonixSegmentedListItem
+import com.resonix.media.core.ui.components.ResonixTopAppBar
 import com.resonix.media.core.ui.components.TopLevelFabKey
 import com.resonix.media.core.ui.components.tvFocusRing
 import com.resonix.media.core.ui.components.tvListFocus
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 import com.resonix.media.core.ui.extensions.copy
 
 @Composable
@@ -83,7 +83,7 @@ internal fun PlaylistListScreenContent(
     }
     BindTopLevelFab(
         key = TopLevelFabKey.PLAYLISTS,
-        icon = NextIcons.Add,
+        icon = ResonixIcons.Add,
         onClick = { onAction(PlaylistUiAction.ShowCreationChooser) },
     )
 
@@ -91,7 +91,7 @@ internal fun PlaylistListScreenContent(
 
     Scaffold(
         topBar = {
-            NextTopAppBar(
+            ResonixTopAppBar(
                 title = stringResource(R.string.playlists),
                 fontWeight = FontWeight.Bold,
                 actions = {
@@ -100,7 +100,7 @@ internal fun PlaylistListScreenContent(
                         modifier = Modifier.tvFocusRing(),
                     ) {
                         Icon(
-                            imageVector = NextIcons.Settings,
+                            imageVector = ResonixIcons.Settings,
                             contentDescription = stringResource(R.string.settings),
                         )
                     }
@@ -202,7 +202,7 @@ internal fun PlaylistListScreenContent(
     }
 
     state.showDeleteDialogFor?.let { playlist ->
-        NextDialog(
+        ResonixDialog(
             title = { Text(text = stringResource(R.string.delete_playlist)) },
             content = {
                 Text(
@@ -237,24 +237,24 @@ private fun CreationChooserDialog(
     onCreateUrl: () -> Unit,
     onCreateFile: () -> Unit,
 ) {
-    NextDialog(
+    ResonixDialog(
         onDismissRequest = onDismissRequest,
         title = { Text(stringResource(R.string.choose_playlist_type)) },
         content = {
             Column {
                 CreationChoice(
                     label = stringResource(R.string.create_local_playlist),
-                    icon = NextIcons.Add,
+                    icon = ResonixIcons.Add,
                     onClick = onCreateLocal,
                 )
                 CreationChoice(
                     label = stringResource(R.string.add_m3u_url_playlist),
-                    icon = NextIcons.Link,
+                    icon = ResonixIcons.Link,
                     onClick = onCreateUrl,
                 )
                 CreationChoice(
                     label = stringResource(R.string.add_m3u_file_playlist),
-                    icon = NextIcons.FileOpen,
+                    icon = ResonixIcons.FileOpen,
                     onClick = onCreateFile,
                 )
             }
@@ -293,12 +293,12 @@ private fun M3UUrlDialog(
     val trimmedUrl = url.trim()
     val isValid = remember(trimmedUrl) { trimmedUrl.isHttpUrl() }
 
-    NextDialog(
+    ResonixDialog(
         onDismissRequest = onDismissRequest,
         title = { Text(stringResource(R.string.add_m3u_url_playlist)) },
         content = {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                NextOutlinedTextField(
+                ResonixOutlinedTextField(
                     value = url,
                     onValueChange = { url = it },
                     label = { Text(stringResource(R.string.playlist_url)) },
@@ -355,12 +355,12 @@ private fun PlaylistNameDialog(
     var name by rememberSaveable(initialName) { mutableStateOf(initialName) }
     val trimmedName = name.trim()
 
-    NextDialog(
+    ResonixDialog(
         onDismissRequest = onDismissRequest,
         title = { Text(title) },
         content = {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                NextOutlinedTextField(
+                ResonixOutlinedTextField(
                     value = name,
                     onValueChange = { name = it },
                     label = { Text(stringResource(R.string.playlist_name)) },
@@ -423,14 +423,14 @@ private fun PlaylistRow(
         playlist.itemCount,
     )
 
-    NextSegmentedListItem(
+    ResonixSegmentedListItem(
         isFirstItem = isFirstItem,
         isLastItem = isLastItem,
         onClick = onClick,
         contentPadding = PaddingValues(12.dp),
         leadingContent = {
             Icon(
-                imageVector = NextIcons.Playlist,
+                imageVector = ResonixIcons.Playlist,
                 contentDescription = null,
                 tint = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.padding(horizontal = 8.dp),
@@ -457,7 +457,7 @@ private fun PlaylistRow(
                     modifier = Modifier.tvFocusRing(),
                 ) {
                     Icon(
-                        imageVector = NextIcons.MoreVert,
+                        imageVector = ResonixIcons.MoreVert,
                         contentDescription = stringResource(R.string.playlist_actions),
                     )
                 }
@@ -467,7 +467,7 @@ private fun PlaylistRow(
                 ) {
                     DropdownMenuItem(
                         text = { Text(stringResource(R.string.rename_playlist)) },
-                        leadingIcon = { Icon(NextIcons.Edit, contentDescription = null) },
+                        leadingIcon = { Icon(ResonixIcons.Edit, contentDescription = null) },
                         onClick = {
                             menuExpanded = false
                             onRename()
@@ -475,7 +475,7 @@ private fun PlaylistRow(
                     )
                     DropdownMenuItem(
                         text = { Text(stringResource(R.string.delete)) },
-                        leadingIcon = { Icon(NextIcons.Delete, contentDescription = null) },
+                        leadingIcon = { Icon(ResonixIcons.Delete, contentDescription = null) },
                         onClick = {
                             menuExpanded = false
                             onDelete()
@@ -521,7 +521,7 @@ private fun PlaylistListEmptyState(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Icon(
-            imageVector = NextIcons.Playlist,
+            imageVector = ResonixIcons.Playlist,
             contentDescription = null,
             tint = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.size(48.dp),

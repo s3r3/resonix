@@ -10,7 +10,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 import com.resonix.media.core.ui.R
-import com.resonix.media.core.ui.components.NextDialog
+import com.resonix.media.core.ui.components.ResonixDialog
 
 @Composable
 internal fun VaultBiometricSetupDialog(onComplete: (Boolean) -> Unit) {
@@ -20,7 +20,7 @@ internal fun VaultBiometricSetupDialog(onComplete: (Boolean) -> Unit) {
     }
 
     var authenticating by rememberSaveable { mutableStateOf(false) }
-    NextDialog(
+    ResonixDialog(
         onDismissRequest = { onComplete(false) },
         title = { Text(stringResource(R.string.vault_biometric_setup_title)) },
         content = { Text(stringResource(R.string.vault_biometric_setup_description)) },

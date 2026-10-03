@@ -38,8 +38,8 @@ import com.resonix.media.core.model.PlayerPreferences
 import com.resonix.media.core.ui.R
 import com.resonix.media.core.ui.components.ClickablePreferenceItem
 import com.resonix.media.core.ui.components.ListSectionTitle
-import com.resonix.media.core.ui.components.NextOutlinedTextField
-import com.resonix.media.core.ui.components.NextTopAppBar
+import com.resonix.media.core.ui.components.ResonixOutlinedTextField
+import com.resonix.media.core.ui.components.ResonixTopAppBar
 import com.resonix.media.core.ui.components.PreferenceSlider
 import com.resonix.media.core.ui.components.PreferenceSwitch
 import com.resonix.media.core.ui.components.PreferenceSwitchWithDivider
@@ -47,7 +47,7 @@ import com.resonix.media.core.ui.components.RadioTextButton
 import com.resonix.media.core.ui.components.rememberTvListFocusRequester
 import com.resonix.media.core.ui.components.tvFocusDown
 import com.resonix.media.core.ui.components.tvListFocus
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 import com.resonix.media.core.ui.theme.ResonixTheme
 import com.resonix.media.feature.settings.composables.OptionsDialog
 import com.resonix.media.feature.settings.extensions.name
@@ -79,12 +79,12 @@ private fun SubtitlePreferencesScreenContent(
     val listFocusRequester = rememberTvListFocusRequester()
     Scaffold(
         topBar = {
-            NextTopAppBar(
+            ResonixTopAppBar(
                 title = stringResource(id = R.string.subtitle),
                 navigationIcon = {
                     FilledTonalIconButton(onClick = { onAction(SubtitlePreferencesUiEvent.NavigateUp) }, modifier = Modifier.tvFocusDown(listFocusRequester)) {
                         Icon(
-                            imageVector = NextIcons.ArrowBack,
+                            imageVector = ResonixIcons.ArrowBack,
                             contentDescription = stringResource(id = R.string.navigate_up),
                         )
                     }
@@ -109,14 +109,14 @@ private fun SubtitlePreferencesScreenContent(
                     title = stringResource(id = R.string.preferred_subtitle_lang),
                     description = LocalesHelper.getLocaleDisplayLanguage(state.preferences.preferredSubtitleLanguage)
                         .takeIf { it.isNotBlank() } ?: stringResource(R.string.preferred_subtitle_lang_description),
-                    icon = NextIcons.Language,
+                    icon = ResonixIcons.Language,
                     onClick = { onAction(SubtitlePreferencesUiEvent.ShowDialog(SubtitlePreferenceDialog.SubtitleLanguageDialog)) },
                     isFirstItem = true,
                 )
                 ClickablePreferenceItem(
                     title = stringResource(R.string.subtitle_text_encoding),
                     description = charsetResource.first { it.contains(state.preferences.subtitleTextEncoding) },
-                    icon = NextIcons.Subtitle,
+                    icon = ResonixIcons.Subtitle,
                     onClick = { onAction(SubtitlePreferencesUiEvent.ShowDialog(SubtitlePreferenceDialog.SubtitleEncodingDialog)) },
                     isLastItem = true,
                 )
@@ -132,7 +132,7 @@ private fun SubtitlePreferencesScreenContent(
                     } else {
                         stringResource(id = R.string.not_configured)
                     },
-                    icon = NextIcons.Subtitle,
+                    icon = ResonixIcons.Subtitle,
                     onClick = {
                         onAction(SubtitlePreferencesUiEvent.ShowDialog(SubtitlePreferenceDialog.OpenSubtitlesDialog))
                     },
@@ -147,7 +147,7 @@ private fun SubtitlePreferencesScreenContent(
                 PreferenceSwitchWithDivider(
                     title = stringResource(R.string.system_caption_style),
                     description = stringResource(R.string.system_caption_style_desc),
-                    icon = NextIcons.Caption,
+                    icon = ResonixIcons.Caption,
                     isChecked = state.preferences.useSystemCaptionStyle,
                     onChecked = { onAction(SubtitlePreferencesUiEvent.ToggleUseSystemCaptionStyle) },
                     onClick = { context.startActivity(Intent(Settings.ACTION_CAPTIONING_SETTINGS)) },
@@ -156,14 +156,14 @@ private fun SubtitlePreferencesScreenContent(
                 ClickablePreferenceItem(
                     title = stringResource(id = R.string.subtitle_font),
                     description = state.preferences.subtitleFont.name(),
-                    icon = NextIcons.Font,
+                    icon = ResonixIcons.Font,
                     enabled = state.preferences.useSystemCaptionStyle.not(),
                     onClick = { onAction(SubtitlePreferencesUiEvent.ShowDialog(SubtitlePreferenceDialog.SubtitleFontDialog)) },
                 )
                 PreferenceSwitch(
                     title = stringResource(id = R.string.subtitle_text_bold),
                     description = stringResource(id = R.string.subtitle_text_bold_desc),
-                    icon = NextIcons.Bold,
+                    icon = ResonixIcons.Bold,
                     enabled = state.preferences.useSystemCaptionStyle.not(),
                     isChecked = state.preferences.subtitleTextBold,
                     onClick = { onAction(SubtitlePreferencesUiEvent.ToggleSubtitleTextBold) },
@@ -171,7 +171,7 @@ private fun SubtitlePreferencesScreenContent(
                 PreferenceSlider(
                     title = stringResource(id = R.string.subtitle_text_size),
                     description = state.preferences.subtitleTextSize.toString(),
-                    icon = NextIcons.FontSize,
+                    icon = ResonixIcons.FontSize,
                     enabled = state.preferences.useSystemCaptionStyle.not(),
                     value = state.preferences.subtitleTextSize.toFloat(),
                     valueRange = 10f..60f,
@@ -184,7 +184,7 @@ private fun SubtitlePreferencesScreenContent(
                             },
                         ) {
                             Icon(
-                                imageVector = NextIcons.History,
+                                imageVector = ResonixIcons.History,
                                 contentDescription = stringResource(id = R.string.reset_seek_increment),
                             )
                         }
@@ -193,7 +193,7 @@ private fun SubtitlePreferencesScreenContent(
                 PreferenceSwitch(
                     title = stringResource(id = R.string.subtitle_background),
                     description = stringResource(id = R.string.subtitle_background_desc),
-                    icon = NextIcons.Background,
+                    icon = ResonixIcons.Background,
                     enabled = state.preferences.useSystemCaptionStyle.not(),
                     isChecked = state.preferences.subtitleBackground,
                     onClick = { onAction(SubtitlePreferencesUiEvent.ToggleSubtitleBackground) },
@@ -201,7 +201,7 @@ private fun SubtitlePreferencesScreenContent(
                 PreferenceSwitch(
                     title = stringResource(R.string.embedded_styles),
                     description = stringResource(R.string.embedded_styles_desc),
-                    icon = NextIcons.Style,
+                    icon = ResonixIcons.Style,
                     isChecked = state.preferences.applyEmbeddedStyles,
                     onClick = { onAction(SubtitlePreferencesUiEvent.ToggleApplyEmbeddedStyles) },
                     isLastItem = true,
@@ -307,7 +307,7 @@ private fun OpenSubtitlesCredentialsDialog(
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
-                NextOutlinedTextField(
+                ResonixOutlinedTextField(
                     label = { Text(text = stringResource(id = R.string.opensubtitles_api_key)) },
                     value = apiKeyValue,
                     onValueChange = { apiKeyValue = it },
@@ -318,7 +318,7 @@ private fun OpenSubtitlesCredentialsDialog(
                     text = stringResource(id = R.string.opensubtitles_api_key_description),
                     style = MaterialTheme.typography.bodySmall,
                 )
-                NextOutlinedTextField(
+                ResonixOutlinedTextField(
                     label = { Text(text = stringResource(id = R.string.opensubtitles_token)) },
                     value = tokenValue,
                     onValueChange = { tokenValue = it },

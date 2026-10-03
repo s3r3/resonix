@@ -33,7 +33,7 @@ import com.resonix.media.core.common.Utils
 import com.resonix.media.core.common.extensions.isTelevision
 import com.resonix.media.core.model.MediaInfo
 import com.resonix.media.core.ui.R
-import com.resonix.media.core.ui.components.NextDialog
+import com.resonix.media.core.ui.components.ResonixDialog
 import com.resonix.media.core.ui.components.thenIf
 import kotlinx.coroutines.launch
 
@@ -56,7 +56,7 @@ fun MediaInfoDialog(
         }
     }
 
-    NextDialog(
+    ResonixDialog(
         onDismissRequest = onDismiss,
         title = {
             Text(

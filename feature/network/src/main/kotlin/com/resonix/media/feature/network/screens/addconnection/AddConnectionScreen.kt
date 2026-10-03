@@ -51,11 +51,11 @@ import com.resonix.media.core.model.NetworkAuthentication
 import com.resonix.media.core.model.NetworkConnection
 import com.resonix.media.core.model.NetworkProtocol
 import com.resonix.media.core.ui.R
-import com.resonix.media.core.ui.components.NextDialog
-import com.resonix.media.core.ui.components.NextOutlinedTextField
-import com.resonix.media.core.ui.components.NextTopAppBar
+import com.resonix.media.core.ui.components.ResonixDialog
+import com.resonix.media.core.ui.components.ResonixOutlinedTextField
+import com.resonix.media.core.ui.components.ResonixTopAppBar
 import com.resonix.media.core.ui.components.tvFocusRing
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 
 /**
  * Default path per protocol: SMB expects a bare share name (no leading slash), while FTP and WebDAV
@@ -203,12 +203,12 @@ internal fun AddConnectionScreenContent(
 
     Scaffold(
         topBar = {
-            NextTopAppBar(
+            ResonixTopAppBar(
                 title = stringResource(if (isEdit) R.string.edit_connection else R.string.add_connection),
                 navigationIcon = {
                     FilledTonalIconButton(onClick = { onAction(AddConnectionAction.Cancel) }, modifier = Modifier.tvFocusRing()) {
                         Icon(
-                            imageVector = NextIcons.Close,
+                            imageVector = ResonixIcons.Close,
                             contentDescription = stringResource(R.string.navigate_up),
                         )
                     }
@@ -288,7 +288,7 @@ internal fun AddConnectionScreenContent(
 
             val moveToNext = KeyboardActions(onNext = { focusManager.moveFocus(FocusDirection.Down) })
 
-            NextOutlinedTextField(
+            ResonixOutlinedTextField(
                 value = name,
                 enabled = !isTesting,
                 onValueChange = { onChange { name = it } },
@@ -298,7 +298,7 @@ internal fun AddConnectionScreenContent(
                 keyboardActions = moveToNext,
                 modifier = Modifier.fillMaxWidth(),
             )
-            NextOutlinedTextField(
+            ResonixOutlinedTextField(
                 value = host,
                 enabled = !isTesting,
                 onValueChange = { newHost ->
@@ -318,7 +318,7 @@ internal fun AddConnectionScreenContent(
                 keyboardActions = moveToNext,
                 modifier = Modifier.fillMaxWidth(),
             )
-            NextOutlinedTextField(
+            ResonixOutlinedTextField(
                 value = port,
                 enabled = !isTesting,
                 onValueChange = { input ->
@@ -339,7 +339,7 @@ internal fun AddConnectionScreenContent(
                 keyboardActions = moveToNext,
                 modifier = Modifier.fillMaxWidth(),
             )
-            NextOutlinedTextField(
+            ResonixOutlinedTextField(
                 value = path,
                 enabled = !isTesting,
                 onValueChange = { onChange { path = it } },
@@ -349,7 +349,7 @@ internal fun AddConnectionScreenContent(
                 keyboardActions = moveToNext,
                 modifier = Modifier.fillMaxWidth(),
             )
-            NextOutlinedTextField(
+            ResonixOutlinedTextField(
                 value = username,
                 enabled = !isTesting,
                 onValueChange = { onChange { username = it } },
@@ -402,7 +402,7 @@ internal fun AddConnectionScreenContent(
             }
 
             if (protocol != NetworkProtocol.SFTP || authentication == NetworkAuthentication.PASSWORD) {
-                NextOutlinedTextField(
+                ResonixOutlinedTextField(
                     value = password,
                     enabled = !isTesting,
                     onValueChange = { onChange { password = it } },
@@ -463,7 +463,7 @@ internal fun AddConnectionScreenContent(
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 }
-                NextOutlinedTextField(
+                ResonixOutlinedTextField(
                     value = privateKeyPassphrase,
                     enabled = !isTesting,
                     onValueChange = { onChange { privateKeyPassphrase = it } },
@@ -550,7 +550,7 @@ internal fun AddConnectionScreenContent(
     }
 
     (saveState as? SaveState.ConfirmHostKey)?.confirmation?.let { confirmation ->
-        NextDialog(
+        ResonixDialog(
             onDismissRequest = { onAction(AddConnectionAction.RejectHostKey) },
             title = { Text(stringResource(R.string.confirm_ssh_host_key)) },
             content = {

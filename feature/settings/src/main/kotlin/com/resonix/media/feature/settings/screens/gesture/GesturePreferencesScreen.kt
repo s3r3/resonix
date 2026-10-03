@@ -34,8 +34,8 @@ import com.resonix.media.core.model.DoubleTapGesture
 import com.resonix.media.core.model.PlayerPreferences
 import com.resonix.media.core.ui.R
 import com.resonix.media.core.ui.components.ListSectionTitle
-import com.resonix.media.core.ui.components.NextDialogWithDoneAndCancelButtons
-import com.resonix.media.core.ui.components.NextTopAppBar
+import com.resonix.media.core.ui.components.ResonixDialogWithDoneAndCancelButtons
+import com.resonix.media.core.ui.components.ResonixTopAppBar
 import com.resonix.media.core.ui.components.PreferenceSlider
 import com.resonix.media.core.ui.components.PreferenceSwitch
 import com.resonix.media.core.ui.components.PreferenceSwitchWithDivider
@@ -43,7 +43,7 @@ import com.resonix.media.core.ui.components.RadioTextButton
 import com.resonix.media.core.ui.components.rememberTvListFocusRequester
 import com.resonix.media.core.ui.components.tvFocusDown
 import com.resonix.media.core.ui.components.tvListFocus
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 import com.resonix.media.core.ui.preview.DayNightPreview
 import com.resonix.media.core.ui.theme.ResonixTheme
 import com.resonix.media.feature.settings.composables.OptionsDialog
@@ -70,12 +70,12 @@ private fun GesturePreferencesScreenContent(
     val listFocusRequester = rememberTvListFocusRequester()
     Scaffold(
         topBar = {
-            NextTopAppBar(
+            ResonixTopAppBar(
                 title = stringResource(id = R.string.gestures),
                 navigationIcon = {
                     FilledTonalIconButton(onClick = { onAction(GesturePreferencesUiEvent.NavigateUp) }, modifier = Modifier.tvFocusDown(listFocusRequester)) {
                         Icon(
-                            imageVector = NextIcons.ArrowBack,
+                            imageVector = ResonixIcons.ArrowBack,
                             contentDescription = stringResource(id = R.string.navigate_up),
                         )
                     }
@@ -99,7 +99,7 @@ private fun GesturePreferencesScreenContent(
                 PreferenceSwitch(
                     title = stringResource(id = R.string.seek_gesture),
                     description = stringResource(id = R.string.seek_gesture_description),
-                    icon = NextIcons.SwipeHorizontal,
+                    icon = ResonixIcons.SwipeHorizontal,
                     isChecked = state.preferences.useSeekControls,
                     onClick = { onAction(GesturePreferencesUiEvent.ToggleUseSeekControls) },
                     isFirstItem = true,
@@ -107,7 +107,7 @@ private fun GesturePreferencesScreenContent(
                 PreferenceSlider(
                     title = stringResource(R.string.seek_gesture_sensitivity),
                     description = state.preferences.seekSensitivity.toString(decimalPlaces = 2),
-                    icon = NextIcons.Sensitivity,
+                    icon = ResonixIcons.Sensitivity,
                     enabled = state.preferences.useSeekControls,
                     value = state.preferences.seekSensitivity,
                     valueRange = 0.1f..2.0f,
@@ -118,7 +118,7 @@ private fun GesturePreferencesScreenContent(
                             onClick = { onAction(GesturePreferencesUiEvent.UpdateSeekSensitivity(PlayerPreferences.DEFAULT_SEEK_SENSITIVITY)) },
                         ) {
                             Icon(
-                                imageVector = NextIcons.History,
+                                imageVector = ResonixIcons.History,
                                 contentDescription = stringResource(id = R.string.reset_seek_sensitivity),
                             )
                         }
@@ -127,14 +127,14 @@ private fun GesturePreferencesScreenContent(
                 PreferenceSwitch(
                     title = stringResource(id = R.string.brightness_gesture),
                     description = stringResource(id = R.string.brightness_gesture_description),
-                    icon = NextIcons.SwipeVertical,
+                    icon = ResonixIcons.SwipeVertical,
                     isChecked = state.preferences.enableBrightnessSwipeGesture,
                     onClick = { onAction(GesturePreferencesUiEvent.ToggleEnableBrightnessSwipeGesture) },
                 )
                 PreferenceSlider(
                     title = stringResource(R.string.brightness_gesture_sensitivity),
                     description = state.preferences.brightnessGestureSensitivity.toString(decimalPlaces = 2),
-                    icon = NextIcons.Sensitivity,
+                    icon = ResonixIcons.Sensitivity,
                     enabled = state.preferences.enableBrightnessSwipeGesture,
                     value = state.preferences.brightnessGestureSensitivity,
                     valueRange = 0.1f..2.0f,
@@ -145,7 +145,7 @@ private fun GesturePreferencesScreenContent(
                             onClick = { onAction(GesturePreferencesUiEvent.UpdateBrightnessGestureSensitivity(PlayerPreferences.DEFAULT_BRIGHTNESS_GESTURE_SENSITIVITY)) },
                         ) {
                             Icon(
-                                imageVector = NextIcons.History,
+                                imageVector = ResonixIcons.History,
                                 contentDescription = stringResource(id = R.string.reset_brightness_gesture_sensitivity),
                             )
                         }
@@ -154,14 +154,14 @@ private fun GesturePreferencesScreenContent(
                 PreferenceSwitch(
                     title = stringResource(id = R.string.volume_gesture),
                     description = stringResource(id = R.string.volume_gesture_description),
-                    icon = NextIcons.SwipeVertical,
+                    icon = ResonixIcons.SwipeVertical,
                     isChecked = state.preferences.enableVolumeSwipeGesture,
                     onClick = { onAction(GesturePreferencesUiEvent.ToggleEnableVolumeSwipeGesture) },
                 )
                 PreferenceSlider(
                     title = stringResource(R.string.volume_gesture_sensitivity),
                     description = state.preferences.volumeGestureSensitivity.toString(decimalPlaces = 2),
-                    icon = NextIcons.Sensitivity,
+                    icon = ResonixIcons.Sensitivity,
                     enabled = state.preferences.enableVolumeSwipeGesture,
                     value = state.preferences.volumeGestureSensitivity,
                     valueRange = 0.1f..2.0f,
@@ -172,7 +172,7 @@ private fun GesturePreferencesScreenContent(
                             onClick = { onAction(GesturePreferencesUiEvent.UpdateVolumeGestureSensitivity(PlayerPreferences.DEFAULT_VOLUME_GESTURE_SENSITIVITY)) },
                         ) {
                             Icon(
-                                imageVector = NextIcons.History,
+                                imageVector = ResonixIcons.History,
                                 contentDescription = stringResource(id = R.string.reset_volume_gesture_sensitivity),
                             )
                         }
@@ -181,14 +181,14 @@ private fun GesturePreferencesScreenContent(
                 PreferenceSwitch(
                     title = stringResource(id = R.string.zoom_gesture),
                     description = stringResource(id = R.string.zoom_gesture_description),
-                    icon = NextIcons.Pinch,
+                    icon = ResonixIcons.Pinch,
                     isChecked = state.preferences.useZoomControls,
                     onClick = { onAction(GesturePreferencesUiEvent.ToggleUseZoomControls) },
                 )
                 PreferenceSwitch(
                     title = stringResource(id = R.string.pan_gesture),
                     description = stringResource(id = R.string.pan_gesture_description),
-                    icon = NextIcons.Pan,
+                    icon = ResonixIcons.Pan,
                     enabled = state.preferences.useZoomControls,
                     isChecked = state.preferences.enablePanGesture,
                     onClick = { onAction(GesturePreferencesUiEvent.ToggleEnablePanGesture) },
@@ -196,7 +196,7 @@ private fun GesturePreferencesScreenContent(
                 PreferenceSwitchWithDivider(
                     title = stringResource(id = R.string.double_tap),
                     description = stringResource(id = R.string.double_tap_description),
-                    icon = NextIcons.DoubleTap,
+                    icon = ResonixIcons.DoubleTap,
                     isChecked = (state.preferences.doubleTapGesture != DoubleTapGesture.NONE),
                     onChecked = { onAction(GesturePreferencesUiEvent.ToggleDoubleTapGesture) },
                     onClick = { onAction(GesturePreferencesUiEvent.ShowDialog(GesturePreferenceDialog.DoubleTapDialog)) },
@@ -204,7 +204,7 @@ private fun GesturePreferencesScreenContent(
                 PreferenceSwitchWithDivider(
                     title = stringResource(id = R.string.long_press_gesture),
                     description = stringResource(id = R.string.long_press_gesture_desc, state.preferences.longPressControlsSpeed),
-                    icon = NextIcons.Tap,
+                    icon = ResonixIcons.Tap,
                     isChecked = state.preferences.useLongPressControls,
                     onChecked = { onAction(GesturePreferencesUiEvent.ToggleUseLongPressControls) },
                     onClick = { onAction(GesturePreferencesUiEvent.ShowDialog(GesturePreferenceDialog.LongPressControlsSpeedDialog)) },
@@ -213,7 +213,7 @@ private fun GesturePreferencesScreenContent(
                     title = stringResource(R.string.seek_increment),
                     description = stringResource(R.string.seconds, state.preferences.seekIncrement),
                     isLastItem = true,
-                    icon = NextIcons.Replay,
+                    icon = ResonixIcons.Replay,
                     value = state.preferences.seekIncrement.toFloat(),
                     valueRange = 1.0f..60.0f,
                     onValueChange = { onAction(GesturePreferencesUiEvent.UpdateSeekIncrement(it.toInt())) },
@@ -221,7 +221,7 @@ private fun GesturePreferencesScreenContent(
                     trailingContent = {
                         FilledIconButton(onClick = { onAction(GesturePreferencesUiEvent.UpdateSeekIncrement(PlayerPreferences.DEFAULT_SEEK_INCREMENT)) }) {
                             Icon(
-                                imageVector = NextIcons.History,
+                                imageVector = ResonixIcons.History,
                                 contentDescription = stringResource(id = R.string.reset_seek_increment),
                             )
                         }
@@ -255,7 +255,7 @@ private fun GesturePreferencesScreenContent(
                         mutableFloatStateOf(state.preferences.longPressControlsSpeed)
                     }
 
-                    NextDialogWithDoneAndCancelButtons(
+                    ResonixDialogWithDoneAndCancelButtons(
                         title = stringResource(R.string.long_press_gesture),
                         onDoneClick = {
                             onAction(GesturePreferencesUiEvent.UpdateLongPressControlsSpeed(longPressControlsSpeed))

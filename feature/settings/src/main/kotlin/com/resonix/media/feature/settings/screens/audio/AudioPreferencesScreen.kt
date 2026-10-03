@@ -26,14 +26,14 @@ import com.resonix.media.core.model.PlayerPreferences
 import com.resonix.media.core.ui.R
 import com.resonix.media.core.ui.components.ClickablePreferenceItem
 import com.resonix.media.core.ui.components.ListSectionTitle
-import com.resonix.media.core.ui.components.NextTopAppBar
+import com.resonix.media.core.ui.components.ResonixTopAppBar
 import com.resonix.media.core.ui.components.PreferenceSlider
 import com.resonix.media.core.ui.components.PreferenceSwitch
 import com.resonix.media.core.ui.components.RadioTextButton
 import com.resonix.media.core.ui.components.rememberTvListFocusRequester
 import com.resonix.media.core.ui.components.tvFocusDown
 import com.resonix.media.core.ui.components.tvListFocus
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 import com.resonix.media.core.ui.theme.ResonixTheme
 import com.resonix.media.feature.settings.composables.OptionsDialog
 import com.resonix.media.feature.settings.utils.LocalesHelper
@@ -61,12 +61,12 @@ private fun AudioPreferencesScreenContent(
     val listFocusRequester = rememberTvListFocusRequester()
     Scaffold(
         topBar = {
-            NextTopAppBar(
+            ResonixTopAppBar(
                 title = stringResource(id = R.string.audio),
                 navigationIcon = {
                     FilledTonalIconButton(onClick = { onAction(AudioPreferencesUiEvent.NavigateUp) }, modifier = Modifier.tvFocusDown(listFocusRequester)) {
                         Icon(
-                            imageVector = NextIcons.ArrowBack,
+                            imageVector = ResonixIcons.ArrowBack,
                             contentDescription = stringResource(id = R.string.navigate_up),
                         )
                     }
@@ -91,35 +91,35 @@ private fun AudioPreferencesScreenContent(
                     title = stringResource(id = R.string.preferred_audio_lang),
                     description = LocalesHelper.getLocaleDisplayLanguage(state.preferences.preferredAudioLanguage)
                         .takeIf { it.isNotBlank() } ?: stringResource(R.string.preferred_audio_lang_description),
-                    icon = NextIcons.Language,
+                    icon = ResonixIcons.Language,
                     onClick = { onAction(AudioPreferencesUiEvent.ShowDialog(AudioPreferenceDialog.AudioLanguageDialog)) },
                     isFirstItem = true,
                 )
                 PreferenceSwitch(
                     title = stringResource(R.string.require_audio_focus),
                     description = stringResource(R.string.require_audio_focus_desc),
-                    icon = NextIcons.Focus,
+                    icon = ResonixIcons.Focus,
                     isChecked = state.preferences.requireAudioFocus,
                     onClick = { onAction(AudioPreferencesUiEvent.ToggleRequireAudioFocus) },
                 )
                 PreferenceSwitch(
                     title = stringResource(id = R.string.pause_on_headset_disconnect),
                     description = stringResource(id = R.string.pause_on_headset_disconnect_desc),
-                    icon = NextIcons.HeadsetOff,
+                    icon = ResonixIcons.HeadsetOff,
                     isChecked = state.preferences.pauseOnHeadsetDisconnect,
                     onClick = { onAction(AudioPreferencesUiEvent.TogglePauseOnHeadsetDisconnect) },
                 )
                 PreferenceSwitch(
                     title = stringResource(id = R.string.system_volume_panel),
                     description = stringResource(id = R.string.system_volume_panel_desc),
-                    icon = NextIcons.Headset,
+                    icon = ResonixIcons.Headset,
                     isChecked = state.preferences.showSystemVolumePanel,
                     onClick = { onAction(AudioPreferencesUiEvent.ToggleShowSystemVolumePanel) },
                 )
 PreferenceSwitch(
                     title = stringResource(R.string.volume_boost),
                     description = stringResource(R.string.volume_boost_desc),
-                    icon = NextIcons.VolumeUp,
+                    icon = ResonixIcons.VolumeUp,
                     isChecked = state.preferences.enableVolumeBoost,
                     onClick = { onAction(AudioPreferencesUiEvent.ToggleVolumeBoost) },
                     isLastItem = true,
@@ -133,7 +133,7 @@ PreferenceSwitch(
                 PreferenceSwitch(
                     title = stringResource(R.string.equalizer),
                     description = stringResource(R.string.equalizer_desc),
-                    icon = NextIcons.Equalizer,
+                    icon = ResonixIcons.Equalizer,
                     isChecked = state.preferences.equalizerEnabled,
                     onClick = { onAction(AudioPreferencesUiEvent.ToggleEqualizer) },
                     isFirstItem = true,
@@ -143,7 +143,7 @@ PreferenceSwitch(
                     description = stringResource(
                         EqualizerPreset.match(state.bands).label,
                     ),
-                    icon = NextIcons.EqualizerPreset,
+                    icon = ResonixIcons.EqualizerPreset,
                     enabled = state.preferences.equalizerEnabled,
                     onClick = { onAction(AudioPreferencesUiEvent.ShowDialog(AudioPreferenceDialog.EqualizerPresetDialog)) },
                 )
@@ -151,7 +151,7 @@ PreferenceSwitch(
                     PreferenceSlider(
                         title = stringResource(equalizerBandLabels[index]),
                         description = stringResource(R.string.equalizer_decibels, level.toDecibels()),
-                        icon = NextIcons.Equalizer,
+                        icon = ResonixIcons.Equalizer,
                         enabled = state.preferences.equalizerEnabled,
                         value = level.toDecibels(),
                         valueRange = PlayerPreferences.EQUALIZER_MIN_LEVEL.toDecibels()..
@@ -166,7 +166,7 @@ PreferenceSwitch(
                 PreferenceSlider(
                     title = stringResource(R.string.equalizer_preamp),
                     description = stringResource(R.string.equalizer_decibels, state.preamp.toDecibels()),
-                    icon = NextIcons.VolumeUp,
+                    icon = ResonixIcons.VolumeUp,
                     enabled = state.preferences.equalizerEnabled,
                     value = state.preamp.toDecibels(),
                     valueRange = PlayerPreferences.EQUALIZER_MIN_LEVEL.toDecibels()..

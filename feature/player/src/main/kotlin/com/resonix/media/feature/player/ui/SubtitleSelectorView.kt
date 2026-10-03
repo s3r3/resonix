@@ -39,7 +39,7 @@ import androidx.media3.common.C
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import com.resonix.media.core.ui.R
-import com.resonix.media.core.ui.components.NextOutlinedTextField
+import com.resonix.media.core.ui.components.ResonixOutlinedTextField
 import com.resonix.media.feature.player.extensions.getName
 import com.resonix.media.feature.player.state.SubtitleOptionsEvent
 import com.resonix.media.feature.player.state.rememberSubtitleOptionsState
@@ -252,7 +252,7 @@ private fun NumberChooserInput(
                 contentDescription = null,
             )
         }
-        NextOutlinedTextField(
+        ResonixOutlinedTextField(
             label = { Text(text = title) },
             value = value,
             onValueChange = onValueChange,

@@ -74,14 +74,14 @@ import com.resonix.media.core.model.PlaylistItem
 import com.resonix.media.core.model.PlaylistType
 import com.resonix.media.core.ui.R
 import com.resonix.media.core.ui.base.DataState
-import com.resonix.media.core.ui.components.NextDialog
-import com.resonix.media.core.ui.components.NextOutlinedTextField
-import com.resonix.media.core.ui.components.NextSegmentedListItem
-import com.resonix.media.core.ui.components.NextTopAppBar
+import com.resonix.media.core.ui.components.ResonixDialog
+import com.resonix.media.core.ui.components.ResonixOutlinedTextField
+import com.resonix.media.core.ui.components.ResonixSegmentedListItem
+import com.resonix.media.core.ui.components.ResonixTopAppBar
 import com.resonix.media.core.ui.components.rememberTvListFocusRequester
 import com.resonix.media.core.ui.components.tvFocusRing
 import com.resonix.media.core.ui.components.tvListFocus
-import com.resonix.media.core.ui.designsystem.NextIcons
+import com.resonix.media.core.ui.designsystem.ResonixIcons
 import com.resonix.media.core.ui.extensions.copy
 import java.text.DateFormat
 import java.util.Date
@@ -136,10 +136,10 @@ internal fun PlaylistDetailScreenContent(
 
     Scaffold(
         topBar = {
-            NextTopAppBar(
+            ResonixTopAppBar(
                 title = {
                     if (state.isSearching) {
-                        NextOutlinedTextField(
+                        ResonixOutlinedTextField(
                             value = state.searchQuery,
                             onValueChange = {
                                 onAction(PlaylistDetailUiAction.OnSearchQueryChange(it))
@@ -158,7 +158,7 @@ internal fun PlaylistDetailScreenContent(
                             trailingIcon = {
                                 IconButton(onClick = exitSearch) {
                                     Icon(
-                                        imageVector = NextIcons.Close,
+                                        imageVector = ResonixIcons.Close,
                                         contentDescription = stringResource(R.string.close_search),
                                     )
                                 }
@@ -193,7 +193,7 @@ internal fun PlaylistDetailScreenContent(
                         modifier = Modifier.tvFocusRing(),
                     ) {
                         Icon(
-                            imageVector = NextIcons.ArrowBack,
+                            imageVector = ResonixIcons.ArrowBack,
                             contentDescription = stringResource(R.string.navigate_up),
                         )
                     }
@@ -209,7 +209,7 @@ internal fun PlaylistDetailScreenContent(
                                 modifier = Modifier.tvFocusRing(),
                             ) {
                                 Icon(
-                                    imageVector = NextIcons.Check,
+                                    imageVector = ResonixIcons.Check,
                                     contentDescription = stringResource(R.string.finish_reordering),
                                 )
                             }
@@ -228,7 +228,7 @@ internal fun PlaylistDetailScreenContent(
                                         modifier = Modifier.tvFocusRing(),
                                     ) {
                                         Icon(
-                                            imageVector = NextIcons.Update,
+                                            imageVector = ResonixIcons.Update,
                                             contentDescription = stringResource(
                                                 R.string.refresh_playlist,
                                             ),
@@ -244,7 +244,7 @@ internal fun PlaylistDetailScreenContent(
                                 modifier = Modifier.tvFocusRing(),
                             ) {
                                 Icon(
-                                    imageVector = NextIcons.Search,
+                                    imageVector = ResonixIcons.Search,
                                     contentDescription = stringResource(R.string.search),
                                 )
                             }
@@ -258,7 +258,7 @@ internal fun PlaylistDetailScreenContent(
                                     modifier = Modifier.tvFocusRing(),
                                 ) {
                                     Icon(
-                                        imageVector = NextIcons.Reorder,
+                                        imageVector = ResonixIcons.Reorder,
                                         contentDescription = stringResource(R.string.reorder_playlist),
                                     )
                                 }
@@ -282,7 +282,7 @@ internal fun PlaylistDetailScreenContent(
                     shape = MaterialTheme.shapes.large,
                 ) {
                     Icon(
-                        imageVector = NextIcons.Play,
+                        imageVector = ResonixIcons.Play,
                         contentDescription = stringResource(R.string.play),
                     )
                 }
@@ -474,7 +474,7 @@ private fun PlaylistDetailContent(
                                             contentAlignment = Alignment.Center,
                                         ) {
                                             Icon(
-                                                imageVector = NextIcons.DragHandle,
+                                                imageVector = ResonixIcons.DragHandle,
                                                 contentDescription = stringResource(
                                                     R.string.reorder_playlist_item,
                                                 ),
@@ -516,7 +516,7 @@ private fun RemoveVideoDialog(
     onConfirm: () -> Unit,
     onDismissRequest: () -> Unit,
 ) {
-    NextDialog(
+    ResonixDialog(
         onDismissRequest = onDismissRequest,
         title = { Text(stringResource(R.string.remove_video)) },
         content = {
@@ -566,7 +566,7 @@ private fun PlaylistVideoRow(
     val rowFocusRequester = remember { FocusRequester() }
     val overflowFocusRequester = remember { FocusRequester() }
 
-    NextSegmentedListItem(
+    ResonixSegmentedListItem(
         modifier = modifier
             .fillMaxWidth()
             .focusRequester(rowFocusRequester)
@@ -592,7 +592,7 @@ private fun PlaylistVideoRow(
                         .background(MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp)),
                 ) {
                     Icon(
-                        imageVector = NextIcons.Video,
+                        imageVector = ResonixIcons.Video,
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.surfaceColorAtElevation(100.dp),
                         modifier = Modifier
@@ -650,7 +650,7 @@ private fun PlaylistVideoRow(
                                 .tvFocusRing(),
                         ) {
                             Icon(
-                                imageVector = NextIcons.MoreVert,
+                                imageVector = ResonixIcons.MoreVert,
                                 contentDescription = stringResource(R.string.playlist_actions),
                             )
                         }
@@ -661,7 +661,7 @@ private fun PlaylistVideoRow(
                             DropdownMenuItem(
                                 text = { Text(stringResource(R.string.remove)) },
                                 leadingIcon = {
-                                    Icon(NextIcons.Delete, contentDescription = null)
+                                    Icon(ResonixIcons.Delete, contentDescription = null)
                                 },
                                 onClick = {
                                     menuExpanded = false
@@ -707,7 +707,7 @@ private fun PlaylistSearchEmptyState(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Icon(
-            imageVector = NextIcons.Search,
+            imageVector = ResonixIcons.Search,
             contentDescription = null,
             tint = MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.size(48.dp),

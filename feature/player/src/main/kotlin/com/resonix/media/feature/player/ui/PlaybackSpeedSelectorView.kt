@@ -39,7 +39,7 @@ import androidx.media3.common.util.UnstableApi
 import com.resonix.media.core.common.extensions.round
 import com.resonix.media.core.common.extensions.toString
 import com.resonix.media.core.ui.R
-import com.resonix.media.core.ui.components.NextSwitch
+import com.resonix.media.core.ui.components.ResonixSwitch
 import com.resonix.media.feature.player.state.rememberPlaybackParametersState
 
 @OptIn(UnstableApi::class)
@@ -192,7 +192,7 @@ fun BoxScope.PlaybackSpeedSelectorView(
                     style = MaterialTheme.typography.bodyLarge,
                     modifier = Modifier.weight(1f),
                 )
-                NextSwitch(
+                ResonixSwitch(
                     checked = playbackParametersState.skipSilenceEnabled,
                     onCheckedChange = null,
                 )
