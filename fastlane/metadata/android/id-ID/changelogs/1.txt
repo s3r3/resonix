@@ -1,0 +1,12 @@
+<p>1.0.0 (versionCode 1) — rilis publik pertama.</p>
+<ul>
+<li>Penelusuran pustaka video dan audio lokal dengan tampilan grid dan daftar, pencarian, dan pengurutan</li>
+<li>Pemutaran lengkap: gestur untuk seek, volume, kecerahan, zoom, dan ketuk ganda</li>
+<li>Kecepatan pemutaran, langkah frame, lompat ke waktu, bab, serta trek subtitle/audio eksternal</li>
+<li>Picture-in-picture, pemutaran latar belakang dengan kontrol media, dan dukungan Android TV (D-pad)</li>
+<li>Equalizer 5 band dengan preset dan preamp</li>
+<li>Efek video: kontras, saturasi, dan hue</li>
+<li>Playlist dengan impor dan ekspor M3U/M3U8</li>
+<li>Pemutaran jaringan lewat SMB, SFTP, FTP, dan WebDAV</li>
+<li>Vault terenkripsi untuk media yang disembunyikan dari galeri, dilindungi PIN atau biometrik</li>
+</ul>

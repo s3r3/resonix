@@ -1,0 +1,1 @@
+Resonix adalah pemutar media Android sumber terbuka untuk media lokal dan jaringan. Mendukung playlist, subtitle, trek audio eksternal, picture-in-picture, media vault terenkripsi, dan kontrol Android TV.

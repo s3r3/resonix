@@ -1,0 +1,1 @@
+Resonix is an open-source Android media player for local and network media. It supports playlists, subtitles, external audio tracks, picture-in-picture playback, encrypted vault media, and Android TV controls.

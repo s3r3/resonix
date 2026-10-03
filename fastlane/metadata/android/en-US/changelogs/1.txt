@@ -1,0 +1,12 @@
+<p>1.0.0 (versionCode 1) — first public build.</p>
+<ul>
+<li>Local video and audio library browsing with grid and list layouts, search, and sorting</li>
+<li>Full playback: gestures for seek, volume, brightness, zoom and double-tap</li>
+<li>Playback speed, frame stepping, jump to time, chapters and external subtitle/audio tracks</li>
+<li>Picture-in-picture, background playback with media controls, and Android TV (D-pad) support</li>
+<li>5-band equalizer with presets and preamp</li>
+<li>Video effects: contrast, saturation and hue</li>
+<li>Playlists with M3U/M3U8 import and export</li>
+<li>Network playback over SMB, SFTP, FTP and WebDAV</li>
+<li>Encrypted vault for media hidden from the gallery, protected by a PIN or biometrics</li>
+</ul>

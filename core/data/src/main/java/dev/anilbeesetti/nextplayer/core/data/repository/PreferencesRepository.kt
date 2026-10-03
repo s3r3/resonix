@@ -1,0 +1,26 @@
+package com.resonix.media.core.data.repository
+
+import com.resonix.media.core.model.ApplicationPreferences
+import com.resonix.media.core.model.PlayerPreferences
+import kotlinx.coroutines.flow.StateFlow
+
+interface PreferencesRepository {
+
+    /**
+     * Stream of [ApplicationPreferences].
+     */
+    val applicationPreferences: StateFlow<ApplicationPreferences>
+
+    /**
+     * Stream of [PlayerPreferences].
+     */
+    val playerPreferences: StateFlow<PlayerPreferences>
+
+    suspend fun updateApplicationPreferences(
+        transform: suspend (ApplicationPreferences) -> ApplicationPreferences,
+    )
+
+    suspend fun updatePlayerPreferences(transform: suspend (PlayerPreferences) -> PlayerPreferences)
+
+    suspend fun resetPreferences()
+}
