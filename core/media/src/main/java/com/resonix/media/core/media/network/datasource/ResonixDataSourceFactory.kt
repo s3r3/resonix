@@ -20,7 +20,7 @@ import org.koin.core.annotation.Single
  */
 @UnstableApi
 @Single
-class NextDataSourceFactory(
+class ResonixDataSourceFactory(
     private val context: Context,
     private val sessions: NetworkSessions,
     private val vaultCipher: VaultCipher,
