@@ -4,16 +4,16 @@
 
 # Resonix
 
-**Pemutar video Android open-source — cepat, privat, dan modern.**
+**An open-source Android video player — fast, private, and modern.**
 
-Dibangun dengan Kotlin & Jetpack Compose. Putar video lokal, jelajahi library jaringan, dan sembunyikan video pribadi di Vault terenkripsi.
+Built with Kotlin and Jetpack Compose. Play local videos, browse network libraries, and hide private videos in an encrypted Vault.
 
 <br />
 
 [![Version](https://img.shields.io/badge/version-0.1.0-6750A4?style=for-the-badge)](https://github.com/s3r3/resonix/releases)
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue?style=for-the-badge)](LICENSE)
-[![Platform](https://img.shields.io/badge/Android-7.0%2B-3DDC84?style=for-the-badge&logo=android&logoColor=white)](#-persyaratan)
-[![Min SDK](https://img.shields.io/badge/minSdk-24-brightgreen?style=for-the-badge)](#-persyaratan)
+[![Platform](https://img.shields.io/badge/Android-7.0%2B-3DDC84?style=for-the-badge&logo=android&logoColor=white)](#-requirements)
+[![Min SDK](https://img.shields.io/badge/minSdk-24-brightgreen?style=for-the-badge)](#-requirements)
 
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.4.20-7F52FF?style=flat-square&logo=kotlin&logoColor=white)](https://kotlinlang.org)
 [![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-Material%203-4285F4?style=flat-square&logo=jetpackcompose&logoColor=white)](https://developer.android.com/jetpack/compose)
@@ -25,52 +25,52 @@ Dibangun dengan Kotlin & Jetpack Compose. Putar video lokal, jelajahi library ja
 <br />
 
 [**Download**](https://github.com/s3r3/resonix/releases) &nbsp;·&nbsp;
-[**Fitur**](#-fitur) &nbsp;·&nbsp;
-[**Memulai**](#-memulai) &nbsp;·&nbsp;
-[**Kontribusi**](#-kontribusi) &nbsp;·&nbsp;
-[**Laporkan Bug**](https://github.com/s3r3/resonix/issues)
+[**Features**](#-features) &nbsp;·&nbsp;
+[**Getting Started**](#-getting-started) &nbsp;·&nbsp;
+[**Contributing**](#-contributing) &nbsp;·&nbsp;
+[**Report a Bug**](https://github.com/s3r3/resonix/issues)
 
 </div>
 
 ---
 
-## 📑 Daftar Isi
+## 📑 Table of Contents
 
-- [Fitur](#-fitur)
+- [Features](#-features)
 - [Tech Stack](#-tech-stack)
-- [Persyaratan](#-persyaratan)
-- [Memulai](#-memulai)
-- [Perintah Pengembangan](#-perintah-pengembangan)
-- [Struktur Proyek](#-struktur-proyek)
-- [Build Rilis](#-build-rilis)
-- [Privasi](#-privasi)
-- [Kontribusi](#-kontribusi)
-- [Lisensi](#-lisensi)
+- [Requirements](#-requirements)
+- [Getting Started](#-getting-started)
+- [Development Commands](#-development-commands)
+- [Project Structure](#-project-structure)
+- [Release Builds](#-release-builds)
+- [Privacy](#-privacy)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ---
 
-## ✨ Fitur
+## ✨ Features
 
 <table>
   <tr>
     <td width="50%" valign="top">
 
 ### 📚 Library
-- Jelajahi video per folder atau daftar datar (MediaStore)
-- Pencarian dengan riwayat (disimpan lokal via DataStore)
-- Urutkan, multi-select, rename, dan dialog info media
-- Thumbnail yang bisa diatur (frame pertama / frame pada persentase / hybrid)
-- Buat dan kelola playlist
+- Browse videos by folder or flat list (MediaStore)
+- Search with history (stored locally via DataStore)
+- Sort, multi-select, rename, and media-info dialogs
+- Configurable thumbnails (first frame / frame-at-percentage / hybrid)
+- Create and manage playlists
 
     </td>
     <td width="50%" valign="top">
 
 ### ▶️ Player
-*(`PlayerActivity` terpisah)*
-- Pemutaran Media3 ExoPlayer dengan MediaSession
-- Picture-in-Picture, kecepatan putar, pilihan track audio/subtitle
-- Kontrol gestur
-- Antrean dari folder atau multi-selection
+*(separate `PlayerActivity`)*
+- Media3 ExoPlayer playback with MediaSession
+- Picture-in-Picture, playback speed, audio/subtitle track selection
+- Gesture controls
+- Queue from a folder or multi-selection
 
     </td>
   </tr>
@@ -78,34 +78,34 @@ Dibangun dengan Kotlin & Jetpack Compose. Putar video lokal, jelajahi library ja
     <td width="50%" valign="top">
 
 ### 🔒 Vault
-- Sembunyikan video dengan enkripsi (AES via `VaultCipher` / `VaultCrypto`)
-- Buka dengan PIN atau biometrik
-- File tersembunyi keluar dari MediaStore; restore mendekripsi kembali ke penyimpanan bersama
+- Hide videos behind encryption (AES via `VaultCipher` / `VaultCrypto`)
+- Unlock with PIN or biometric
+- Hidden files leave MediaStore; restore decrypts back to shared storage
 
     </td>
     <td width="50%" valign="top">
 
 ### 🌐 Network
-- Jelajahi library jarak jauh: **SMB** (smbj), **FTP** (commons-net), **WebDAV** (sardine), **SSH/SFTP** (sshj)
-- Tambah dan validasi koneksi
+- Browse remote libraries: **SMB** (smbj), **FTP** (commons-net), **WebDAV** (sardine), **SSH/SFTP** (sshj)
+- Add and validate connections
 
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
 
-### ⚙️ Pengaturan
-- Tampilan: tema, dynamic color, aksen, dark mode kontras tinggi
-- Library media, player, gestur, audio, subtitle, umum
-- About + lisensi open-source
+### ⚙️ Settings
+- Appearance: theme, dynamic color, accent, high-contrast dark
+- Media library, player, gestures, audio, subtitle, general
+- About + open-source licenses
 
     </td>
     <td width="50%" valign="top">
 
-### 🧩 Lainnya
-- Splash screen video, global crash handler (`CrashActivity`)
-- Dukungan Leanback launcher (UI siap Android TV)
-- **Tanpa akun, tanpa analitik, tanpa tracking** — lihat [PRIVACY](PRIVACY)
+### 🧩 Other
+- Video splash screen, global crash handler (`CrashActivity`)
+- Leanback launcher support (Android TV–capable UI)
+- **No accounts, no analytics, no tracking** — see [PRIVACY](PRIVACY)
 
     </td>
   </tr>
@@ -115,15 +115,15 @@ Dibangun dengan Kotlin & Jetpack Compose. Putar video lokal, jelajahi library ja
 
 ## 🛠 Tech Stack
 
-| Area | Pilihan |
-|------|---------|
-| **Bahasa** | Kotlin 2.4.20 |
+| Area | Choice |
+|------|--------|
+| **Language** | Kotlin 2.4.20 |
 | **UI** | Jetpack Compose (BOM 2026.09.00), Material 3, Material 3 Adaptive |
-| **Navigasi** | Navigation 3 (`androidx.navigation3`) |
+| **Navigation** | Navigation 3 (`androidx.navigation3`) |
 | **Playback** | Media3 / ExoPlayer 1.11.1, nextlib decoders |
-| **Persistensi** | Room 2.8.5, DataStore (kotlinx.serialization) |
+| **Persistence** | Room 2.8.5, DataStore (kotlinx.serialization) |
 | **DI** | Koin 4.2.2 (annotations + KSP) |
-| **Gambar** | Coil 3.6.3 (custom vault fetcher + thumbnail decoder) |
+| **Images** | Coil 3.6.3 (custom vault fetcher + thumbnail decoder) |
 | **Build** | Gradle 9.7.1, AGP 9.4.1, version catalog (`gradle/libs.versions.toml`) |
 | **Lint** | ktlint 12.3.0 |
 
@@ -131,132 +131,132 @@ Dibangun dengan Kotlin & Jetpack Compose. Putar video lokal, jelajahi library ja
 
 ---
 
-## 📋 Persyaratan
+## 📋 Requirements
 
-- Android Studio (kompatibel AGP 9.x) atau JDK 17+ untuk CLI
+- Android Studio (AGP 9.x compatible) or JDK 17+ CLI
 - Android SDK 37
-- Perangkat/emulator Android 7.0+ (API 24)
+- Device/emulator on Android 7.0+ (API 24)
 
 ---
 
-## 🚀 Memulai
+## 🚀 Getting Started
 
 ```bash
 git clone https://github.com/s3r3/resonix.git
 cd resonix
 ./gradlew :app:assembleDebug
-./gradlew :app:installDebug   # dengan perangkat/emulator terhubung
+./gradlew :app:installDebug   # with a device/emulator connected
 ```
 
-APK debug: `app/build/outputs/apk/debug/app-debug.apk`
+Debug APK: `app/build/outputs/apk/debug/app-debug.apk`
 
 ---
 
-## 💻 Perintah Pengembangan
+## 💻 Development Commands
 
-Dari [AGENTS.md](AGENTS.md):
+From [AGENTS.md](AGENTS.md):
 
-| Perintah | Fungsi |
-|----------|--------|
-| `./gradlew :app:assembleDebug` | Build debug |
-| `./gradlew test` | Unit test (JUnit4, Robolectric, coroutine-test) |
-| `./gradlew ktlintCheck` | Cek gaya kode |
-| `./gradlew ktlintFormat` | Format otomatis |
-| `./gradlew :app:connectedAndroidTest` | Instrumented test |
+| Command | Purpose |
+|---------|---------|
+| `./gradlew :app:assembleDebug` | Debug build |
+| `./gradlew test` | Unit tests (JUnit4, Robolectric, coroutine-test) |
+| `./gradlew ktlintCheck` | Style check |
+| `./gradlew ktlintFormat` | Auto-format |
+| `./gradlew :app:connectedAndroidTest` | Instrumented tests |
 | `./gradlew lint` | Android lint |
 
-**Konvensi:** indentasi empat spasi, trailing comma, `PascalCase` untuk tipe/composable, `camelCase` untuk member. Package root: `com.resonix.media`.
+**Conventions:** four-space indent, trailing commas, `PascalCase` types/composables, `camelCase` members. Package root: `com.resonix.media`.
 
 ---
 
-## 🗂 Struktur Proyek
+## 🗂 Project Structure
 
 ```
-app/                  # MainActivity, graf Nav3, splash, crash handler, DI root
+app/                  # MainActivity, Nav3 graph, splash, crash handler, DI root
 core/
   common/             # Extensions, dispatchers, system services
-  data/               # Repository (media, vault, playlist, search, prefs)
+  data/               # Repositories (media, vault, playlist, search, prefs)
   database/           # Room (MediaDatabase: playlists, hidden videos, state, network)
-  datastore/          # Preferensi app/player/riwayat pencarian
-  domain/             # Use case
-  media/              # Query MediaStore, vault crypto, network data sources
-  model/              # Model bersama
-  ui/                 # Tema, basis MviViewModel, composable bersama
+  datastore/          # App/player/search-history preferences
+  domain/             # Use cases
+  media/              # MediaStore queries, vault crypto, network data sources
+  model/              # Shared models
+  ui/                 # Theme, MviViewModel base, shared composables
 feature/
-  media/              # Media picker, search, UI vault
-  network/            # CRUD koneksi + remote browse
-  player/             # PlayerActivity, kontrol, gestur, PiP
-  playlist/           # Daftar/detail playlist
-  settings/           # Semua layar preferensi + AboutLibraries
-fastlane/             # Lane Play Store (build, internal, beta, promote)
+  media/              # Media picker, search, vault UI
+  network/            # Connection CRUD + remote browse
+  player/             # PlayerActivity, controls, gestures, PiP
+  playlist/           # Playlist list/detail
+  settings/           # All preference screens + AboutLibraries
+fastlane/             # Play Store lanes (build, internal, beta, promote)
 ```
 
-**Alur masuk:** `ResonixApplication` (Koin + Coil) → `MainActivity` (tema dari prefs → splash video → Nav3 mulai di `MediaPickerRoute`) → pemutaran membuka `PlayerActivity` dengan URI via `PlayerApi`.
+**Entry flow:** `ResonixApplication` (Koin + Coil) → `MainActivity` (theme from prefs → splash video → Nav3 starting at `MediaPickerRoute`) → playback opens `PlayerActivity` with URIs via `PlayerApi`.
 
 ---
 
-## 📦 Build Rilis
+## 📦 Release Builds
 
-Signing bersifat opsional untuk debug. Untuk rilis, berikan lewat environment variable atau Gradle properties (**jangan pernah di-commit**):
+Signing is optional for debug. For release, supply via env vars or Gradle properties (**never commit**):
 
 - `RELEASE_STORE_FILE`, `RELEASE_STORE_PASSWORD`
 - `RELEASE_KEY_ALIAS`, `RELEASE_KEY_PASSWORD`
 
-`./gradlew :app:bundleRelease` menghasilkan AAB (R8 full mode, resource shrinking aktif).
+`./gradlew :app:bundleRelease` produces the AAB (R8 full mode, resource shrinking on).
 
 <details>
-<summary><b>🚢 Fastlane</b> — lane di <code>fastlane/Fastfile</code> (package Play: <code>com.resonix.media</code>)</summary>
+<summary><b>🚢 Fastlane</b> — lanes in <code>fastlane/Fastfile</code> (Play package: <code>com.resonix.media</code>)</summary>
 
 <br />
 
-| Lane | Aksi |
-|------|------|
-| `verify` | ktlint + unit test + build debug |
-| `build` | AAB rilis bertanda tangan |
+| Lane | Action |
+|------|--------|
+| `verify` | ktlint + unit tests + debug build |
+| `build` | Signed release AAB |
 | `lint` | `lintRelease` |
-| `internal` / `beta` | Upload AAB ke track tersebut |
+| `internal` / `beta` | Upload AAB to that track |
 | `promote` | internal → beta → production (draft) |
-| `metadata` | Hanya store listing |
+| `metadata` | Store listing only |
 
-Upload ke Play membutuhkan `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON` (lihat `fastlane/Appfile`).
+Play upload needs `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON` (see `fastlane/Appfile`).
 
 </details>
 
 ---
 
-## 🔐 Privasi
+## 🔐 Privacy
 
-Resonix **tidak mengumpulkan data pribadi** dan **tidak membagikan data ke pihak ketiga**.
+Resonix **collects no personal data** and **shares no data with third parties**.
 
-- Akses media memakai `READ_MEDIA_VIDEO` / `READ_MEDIA_AUDIO` / `READ_MEDIA_IMAGES` (dan `READ_EXTERNAL_STORAGE` lama untuk ≤ API 32).
-- `INTERNET` hanya dipakai untuk penjelajahan library jaringan yang opsional.
+- Media access uses `READ_MEDIA_VIDEO` / `READ_MEDIA_AUDIO` / `READ_MEDIA_IMAGES` (and legacy `READ_EXTERNAL_STORAGE` ≤ API 32).
+- `INTERNET` is used only for optional network library browsing.
 
-Teks lengkap: [PRIVACY](PRIVACY).
-
----
-
-## 🤝 Kontribusi
-
-Kontribusi sangat diterima!
-
-1. Fork dan buat branch: `git checkout -b feature/perubahan-anda`
-2. Jaga batas antar modul tetap rapat; tanpa abstraksi spekulatif
-3. Jalankan `./gradlew ktlintCheck test` sebelum membuka PR
-
-Menemukan bug? [Buka issue](https://github.com/s3r3/resonix/issues).
+Full text: [PRIVACY](PRIVACY).
 
 ---
 
-## 📄 Lisensi
+## 🤝 Contributing
 
-Didistribusikan di bawah [GNU GPL v3](LICENSE).
+Contributions are welcome!
+
+1. Fork and branch: `git checkout -b feature/your-change`
+2. Keep module boundaries tight; no speculative abstractions
+3. Run `./gradlew ktlintCheck test` before opening a PR
+
+Found a bug? [Open an issue](https://github.com/s3r3/resonix/issues).
+
+---
+
+## 📄 License
+
+Distributed under the [GNU GPL v3](LICENSE).
 
 <div align="center">
 
 <br />
 
-Dibuat dengan ❤️ untuk para pecinta video di Android
+Made with ❤️ for Android video lovers
 
-⭐ **Jika Resonix berguna, beri bintang di repo ini!**
+⭐ **If Resonix is useful to you, consider starring the repo!**
 
 </div>
