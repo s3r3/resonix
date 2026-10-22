@@ -37,6 +37,7 @@ Built with Kotlin and Jetpack Compose. Play local videos, browse network librari
 ## 📑 Table of Contents
 
 - [Features](#-features)
+- [Promo](#-promo)
 - [Tech Stack](#-tech-stack)
 - [Requirements](#-requirements)
 - [Getting Started](#-getting-started)
@@ -110,6 +111,20 @@ Built with Kotlin and Jetpack Compose. Play local videos, browse network librari
     </td>
   </tr>
 </table>
+
+---
+
+## 🎬 Promo
+
+<div align="center">
+
+<video src="https://raw.githubusercontent.com/s3r3/resonix/main/docs/promo-resonix.mp4" controls width="720"></video>
+
+<br />
+
+[Watch / download the promo video](docs/promo-resonix.mp4)
+
+</div>
 
 ---
 
